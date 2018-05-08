@@ -51,7 +51,7 @@ extension Pytheas {
         
         var pointJson: [String:Any] = [:]
         pointJson[Key.type] = Value.Point
-        pointJson[Key.coordinates] = [point.coordinate.latitude, point.coordinate.longitude]
+        pointJson[Key.coordinates] = [point.coordinate.longitude, point.coordinate.latitude]
         
         return pointJson
     }

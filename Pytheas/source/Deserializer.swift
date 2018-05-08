@@ -64,8 +64,8 @@ public final class Pytheas {
     private static func coordinate(from coordinates: [Double]) -> CLLocationCoordinate2D? {
         
         guard coordinates.count == 2,
-              let latitude = coordinates.first,
-              let longitude = coordinates.last else { return nil }
+              let longitude = coordinates.first,
+              let latitude = coordinates.last else { return nil }
         
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }

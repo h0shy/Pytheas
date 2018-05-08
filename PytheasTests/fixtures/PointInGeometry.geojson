@@ -2,7 +2,7 @@
     "geometry":
     {
         "type": "Point",
-        "coordinates": [50.0, 100.0]
+        "coordinates": [50.0, 60.0]
     },
     "properties": {
         "title": "title",

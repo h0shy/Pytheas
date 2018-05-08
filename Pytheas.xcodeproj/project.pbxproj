@@ -13,6 +13,7 @@
 		8C1596472092804E0063805F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596442092804E0063805F /* Extensions.swift */; };
 		8C1596482092804E0063805F /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596452092804E0063805F /* Deserializer.swift */; };
 		8C1596492092804E0063805F /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596462092804E0063805F /* Serializer.swift */; };
+		8C4AA1AA20A20D75009C20EC /* PytheasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4AA1A920A20D74009C20EC /* PytheasTests.swift */; };
 		8C624FDD209CD96000DC4924 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C624FDC209CD96000DC4924 /* Constants.swift */; };
 		8C624FDE209CD96000DC4924 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C624FDC209CD96000DC4924 /* Constants.swift */; };
 		8CF6EC2E20A1B42D003865CD /* FeatureCollection.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0320A1B1E7003865CD /* FeatureCollection.geojson */; };
@@ -73,7 +74,7 @@
 		8C1596442092804E0063805F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8C1596452092804E0063805F /* Deserializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deserializer.swift; sourceTree = "<group>"; };
 		8C1596462092804E0063805F /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
-		8C15964A209280610063805F /* MoziTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoziTests.swift; sourceTree = "<group>"; };
+		8C4AA1A920A20D74009C20EC /* PytheasTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PytheasTests.swift; sourceTree = "<group>"; };
 		8C624FDC209CD96000DC4924 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8CF6EC0120A1B1E6003865CD /* MultiLineStringInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiLineStringInGeometry.geojson; sourceTree = "<group>"; };
 		8CF6EC0220A1B1E7003865CD /* MultiPolygonInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiPolygonInGeometry.geojson; sourceTree = "<group>"; };
@@ -168,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				8C15963A209280370063805F /* Info.plist */,
-				8C15964A209280610063805F /* MoziTests.swift */,
+				8C4AA1A920A20D74009C20EC /* PytheasTests.swift */,
 				8C15964B209280610063805F /* fixtures */,
 			);
 			path = PytheasTests;
@@ -429,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C4AA1AA20A20D75009C20EC /* PytheasTests.swift in Sources */,
 				8C624FDE209CD96000DC4924 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

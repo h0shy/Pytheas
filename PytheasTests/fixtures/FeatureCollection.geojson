@@ -5,7 +5,7 @@
                  "geometry":
                  {
                  "type": "Point",
-                 "coordinates": [50.0, 100.0]
+                 "coordinates": [50.0, 60.0]
                  },
                  "properties": {
                  "title": "title",
@@ -17,8 +17,8 @@
                  "geometry": {
                  "type": "MultiPoint",
                  "coordinates": [
-                                 [51.0, 101.0],
-                                 [52.0, 102.0]
+                                 [51.0, 61.0],
+                                 [52.0, 62.0]
                                  ]
                  },
                  "properties": {

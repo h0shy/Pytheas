@@ -15,8 +15,8 @@ final class PytheasTests: QuickSpec {
 
     override func spec() {
         
-        let latitudeIndex = 0
-        let longitudeIndex = 1
+        let longitudeIndex = 0
+        let latitudeIndex = 1
         let outerPolygonIndex = 0
         
         func jsonFromFixture(_ name: String) -> [String:Any] {

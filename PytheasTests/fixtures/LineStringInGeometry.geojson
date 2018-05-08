@@ -3,8 +3,8 @@
     "geometry": {
         "type": "LineString",
         "coordinates": [
-                        [50.0, 100.0],
-                        [51.0, 101.0]
+                        [50.0, 60.0],
+                        [51.0, 61.0]
                         ]
     },
     "properties": {
