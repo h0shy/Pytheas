@@ -1,0 +1,14 @@
+
+{
+"geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+                        [50.0, 100.0],
+                        [51.0, 101.0]
+                        ]
+    },
+    "properties": {
+        "title": "title",
+        "subtitle": "subtitle"
+    }
+}

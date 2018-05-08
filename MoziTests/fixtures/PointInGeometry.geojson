@@ -1,0 +1,11 @@
+{
+    "geometry":
+    {
+        "type": "Point",
+        "coordinates": [50.0, 100.0]
+    },
+    "properties": {
+        "title": "title",
+        "subtitle": "subtitle"
+    }
+}

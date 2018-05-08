@@ -1,0 +1,686 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		455DE6018F464728BDBFBC09 /* Pods_Mozi_MoziTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C84C85417B4C7CEBC5FF4D /* Pods_Mozi_MoziTests.framework */; };
+		88AD3A7A8EFBE15C395577BA /* Pods_Mozi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447CDB61A0E63111D134C0A1 /* Pods_Mozi.framework */; };
+		8C159634209280370063805F /* Mozi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C15962A209280370063805F /* Mozi.framework */; };
+		8C15963B209280370063805F /* Mozi.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C15962D209280370063805F /* Mozi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C1596472092804E0063805F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596442092804E0063805F /* Extensions.swift */; };
+		8C1596482092804E0063805F /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596452092804E0063805F /* Deserializer.swift */; };
+		8C1596492092804E0063805F /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596462092804E0063805F /* Serializer.swift */; };
+		8C15965B209280620063805F /* MoziTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C15964A209280610063805F /* MoziTests.swift */; };
+		8C624FDD209CD96000DC4924 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C624FDC209CD96000DC4924 /* Constants.swift */; };
+		8C624FDE209CD96000DC4924 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C624FDC209CD96000DC4924 /* Constants.swift */; };
+		8CF6EC2E20A1B42D003865CD /* FeatureCollection.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0320A1B1E7003865CD /* FeatureCollection.geojson */; };
+		8CF6EC2F20A1B42D003865CD /* LineString.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0A20A1B1E7003865CD /* LineString.geojson */; };
+		8CF6EC3020A1B42D003865CD /* LineStringInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0820A1B1E7003865CD /* LineStringInGeometry.geojson */; };
+		8CF6EC3120A1B42D003865CD /* MultiLineString.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0B20A1B1E7003865CD /* MultiLineString.geojson */; };
+		8CF6EC3220A1B42D003865CD /* MultiLineStringInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0120A1B1E6003865CD /* MultiLineStringInGeometry.geojson */; };
+		8CF6EC3320A1B42D003865CD /* MultiPoint.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0E20A1B1E7003865CD /* MultiPoint.geojson */; };
+		8CF6EC3420A1B42D003865CD /* MultiPointInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0620A1B1E7003865CD /* MultiPointInGeometry.geojson */; };
+		8CF6EC3520A1B42D003865CD /* MultiPolygon.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0D20A1B1E7003865CD /* MultiPolygon.geojson */; };
+		8CF6EC3620A1B42D003865CD /* MultiPolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0220A1B1E7003865CD /* MultiPolygonInGeometry.geojson */; };
+		8CF6EC3720A1B42D003865CD /* Point.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0920A1B1E7003865CD /* Point.geojson */; };
+		8CF6EC3820A1B42D003865CD /* PointInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0520A1B1E7003865CD /* PointInGeometry.geojson */; };
+		8CF6EC3920A1B42D003865CD /* Polygon.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0C20A1B1E7003865CD /* Polygon.geojson */; };
+		8CF6EC3A20A1B42D003865CD /* PolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0420A1B1E7003865CD /* PolygonInGeometry.geojson */; };
+		8CF6EC3B20A1B42D003865CD /* PolygonWithHoles.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0720A1B1E7003865CD /* PolygonWithHoles.geojson */; };
+		8CF6EC3C20A1B42D003865CD /* PolygonWithHolesInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0F20A1B1E7003865CD /* PolygonWithHolesInGeometry.geojson */; };
+		8CF6EC3D20A1B42D003865CD /* FeatureCollection.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0320A1B1E7003865CD /* FeatureCollection.geojson */; };
+		8CF6EC3E20A1B42D003865CD /* LineString.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0A20A1B1E7003865CD /* LineString.geojson */; };
+		8CF6EC3F20A1B42D003865CD /* LineStringInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0820A1B1E7003865CD /* LineStringInGeometry.geojson */; };
+		8CF6EC4020A1B42D003865CD /* MultiLineString.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0B20A1B1E7003865CD /* MultiLineString.geojson */; };
+		8CF6EC4120A1B42D003865CD /* MultiLineStringInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0120A1B1E6003865CD /* MultiLineStringInGeometry.geojson */; };
+		8CF6EC4220A1B42D003865CD /* MultiPoint.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0E20A1B1E7003865CD /* MultiPoint.geojson */; };
+		8CF6EC4320A1B42D003865CD /* MultiPointInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0620A1B1E7003865CD /* MultiPointInGeometry.geojson */; };
+		8CF6EC4420A1B42D003865CD /* MultiPolygon.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0D20A1B1E7003865CD /* MultiPolygon.geojson */; };
+		8CF6EC4520A1B42D003865CD /* MultiPolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0220A1B1E7003865CD /* MultiPolygonInGeometry.geojson */; };
+		8CF6EC4620A1B42D003865CD /* Point.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0920A1B1E7003865CD /* Point.geojson */; };
+		8CF6EC4720A1B42D003865CD /* PointInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0520A1B1E7003865CD /* PointInGeometry.geojson */; };
+		8CF6EC4820A1B42D003865CD /* Polygon.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0C20A1B1E7003865CD /* Polygon.geojson */; };
+		8CF6EC4920A1B42D003865CD /* PolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0420A1B1E7003865CD /* PolygonInGeometry.geojson */; };
+		8CF6EC4A20A1B42D003865CD /* PolygonWithHoles.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0720A1B1E7003865CD /* PolygonWithHoles.geojson */; };
+		8CF6EC4B20A1B42D003865CD /* PolygonWithHolesInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0F20A1B1E7003865CD /* PolygonWithHolesInGeometry.geojson */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C159635209280370063805F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C159621209280370063805F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C159629209280370063805F;
+			remoteInfo = Mozi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		165D95F6A470F89263F47540 /* Pods-Mozi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi/Pods-Mozi.debug.xcconfig"; sourceTree = "<group>"; };
+		33C84C85417B4C7CEBC5FF4D /* Pods_Mozi_MoziTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mozi_MoziTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		447CDB61A0E63111D134C0A1 /* Pods_Mozi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mozi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C15962A209280370063805F /* Mozi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mozi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C15962D209280370063805F /* Mozi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mozi.h; sourceTree = "<group>"; };
+		8C15962E209280370063805F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C159633209280370063805F /* MoziTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoziTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C15963A209280370063805F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C1596442092804E0063805F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8C1596452092804E0063805F /* Deserializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deserializer.swift; sourceTree = "<group>"; };
+		8C1596462092804E0063805F /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
+		8C15964A209280610063805F /* MoziTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoziTests.swift; sourceTree = "<group>"; };
+		8C624FDC209CD96000DC4924 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8CF6EC0120A1B1E6003865CD /* MultiLineStringInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiLineStringInGeometry.geojson; sourceTree = "<group>"; };
+		8CF6EC0220A1B1E7003865CD /* MultiPolygonInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiPolygonInGeometry.geojson; sourceTree = "<group>"; };
+		8CF6EC0320A1B1E7003865CD /* FeatureCollection.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FeatureCollection.geojson; sourceTree = "<group>"; };
+		8CF6EC0420A1B1E7003865CD /* PolygonInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PolygonInGeometry.geojson; sourceTree = "<group>"; };
+		8CF6EC0520A1B1E7003865CD /* PointInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PointInGeometry.geojson; sourceTree = "<group>"; };
+		8CF6EC0620A1B1E7003865CD /* MultiPointInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiPointInGeometry.geojson; sourceTree = "<group>"; };
+		8CF6EC0720A1B1E7003865CD /* PolygonWithHoles.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PolygonWithHoles.geojson; sourceTree = "<group>"; };
+		8CF6EC0820A1B1E7003865CD /* LineStringInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LineStringInGeometry.geojson; sourceTree = "<group>"; };
+		8CF6EC0920A1B1E7003865CD /* Point.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Point.geojson; sourceTree = "<group>"; };
+		8CF6EC0A20A1B1E7003865CD /* LineString.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LineString.geojson; sourceTree = "<group>"; };
+		8CF6EC0B20A1B1E7003865CD /* MultiLineString.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiLineString.geojson; sourceTree = "<group>"; };
+		8CF6EC0C20A1B1E7003865CD /* Polygon.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Polygon.geojson; sourceTree = "<group>"; };
+		8CF6EC0D20A1B1E7003865CD /* MultiPolygon.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiPolygon.geojson; sourceTree = "<group>"; };
+		8CF6EC0E20A1B1E7003865CD /* MultiPoint.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiPoint.geojson; sourceTree = "<group>"; };
+		8CF6EC0F20A1B1E7003865CD /* PolygonWithHolesInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PolygonWithHolesInGeometry.geojson; sourceTree = "<group>"; };
+		9C976C897A4B0AED4FBE897D /* Pods-Mozi-MoziTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi-MoziTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi-MoziTests/Pods-Mozi-MoziTests.release.xcconfig"; sourceTree = "<group>"; };
+		D1DE36D293044A6097C668A2 /* Pods-Mozi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi/Pods-Mozi.release.xcconfig"; sourceTree = "<group>"; };
+		D55BB5EAE18A5E17211A2083 /* Pods-Mozi-MoziTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi-MoziTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi-MoziTests/Pods-Mozi-MoziTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8C159626209280370063805F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88AD3A7A8EFBE15C395577BA /* Pods_Mozi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C159630209280370063805F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C159634209280370063805F /* Mozi.framework in Frameworks */,
+				455DE6018F464728BDBFBC09 /* Pods_Mozi_MoziTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12D9CA2C8005887D0D889F88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				165D95F6A470F89263F47540 /* Pods-Mozi.debug.xcconfig */,
+				D1DE36D293044A6097C668A2 /* Pods-Mozi.release.xcconfig */,
+				D55BB5EAE18A5E17211A2083 /* Pods-Mozi-MoziTests.debug.xcconfig */,
+				9C976C897A4B0AED4FBE897D /* Pods-Mozi-MoziTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8C159620209280370063805F = {
+			isa = PBXGroup;
+			children = (
+				8C15962C209280370063805F /* Mozi */,
+				8C159637209280370063805F /* MoziTests */,
+				8C15962B209280370063805F /* Products */,
+				12D9CA2C8005887D0D889F88 /* Pods */,
+				D80ED1AAE734AC86D03529C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8C15962B209280370063805F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C15962A209280370063805F /* Mozi.framework */,
+				8C159633209280370063805F /* MoziTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C15962C209280370063805F /* Mozi */ = {
+			isa = PBXGroup;
+			children = (
+				8CF6EC4C20A1B76D003865CD /* source */,
+				8C15962E209280370063805F /* Info.plist */,
+				8C15962D209280370063805F /* Mozi.h */,
+			);
+			path = Mozi;
+			sourceTree = "<group>";
+		};
+		8C159637209280370063805F /* MoziTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C15963A209280370063805F /* Info.plist */,
+				8C15964A209280610063805F /* MoziTests.swift */,
+				8C15964B209280610063805F /* fixtures */,
+			);
+			path = MoziTests;
+			sourceTree = "<group>";
+		};
+		8C15964B209280610063805F /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				8CF6EC0320A1B1E7003865CD /* FeatureCollection.geojson */,
+				8CF6EC0A20A1B1E7003865CD /* LineString.geojson */,
+				8CF6EC0820A1B1E7003865CD /* LineStringInGeometry.geojson */,
+				8CF6EC0B20A1B1E7003865CD /* MultiLineString.geojson */,
+				8CF6EC0120A1B1E6003865CD /* MultiLineStringInGeometry.geojson */,
+				8CF6EC0E20A1B1E7003865CD /* MultiPoint.geojson */,
+				8CF6EC0620A1B1E7003865CD /* MultiPointInGeometry.geojson */,
+				8CF6EC0D20A1B1E7003865CD /* MultiPolygon.geojson */,
+				8CF6EC0220A1B1E7003865CD /* MultiPolygonInGeometry.geojson */,
+				8CF6EC0920A1B1E7003865CD /* Point.geojson */,
+				8CF6EC0520A1B1E7003865CD /* PointInGeometry.geojson */,
+				8CF6EC0C20A1B1E7003865CD /* Polygon.geojson */,
+				8CF6EC0420A1B1E7003865CD /* PolygonInGeometry.geojson */,
+				8CF6EC0720A1B1E7003865CD /* PolygonWithHoles.geojson */,
+				8CF6EC0F20A1B1E7003865CD /* PolygonWithHolesInGeometry.geojson */,
+			);
+			path = fixtures;
+			sourceTree = "<group>";
+		};
+		8CF6EC4C20A1B76D003865CD /* source */ = {
+			isa = PBXGroup;
+			children = (
+				8C624FDC209CD96000DC4924 /* Constants.swift */,
+				8C1596452092804E0063805F /* Deserializer.swift */,
+				8C1596442092804E0063805F /* Extensions.swift */,
+				8C1596462092804E0063805F /* Serializer.swift */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		D80ED1AAE734AC86D03529C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				447CDB61A0E63111D134C0A1 /* Pods_Mozi.framework */,
+				33C84C85417B4C7CEBC5FF4D /* Pods_Mozi_MoziTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8C159627209280370063805F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C15963B209280370063805F /* Mozi.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8C159629209280370063805F /* Mozi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C15963E209280370063805F /* Build configuration list for PBXNativeTarget "Mozi" */;
+			buildPhases = (
+				68A1AF85C9E6EA759307B829 /* [CP] Check Pods Manifest.lock */,
+				8C159625209280370063805F /* Sources */,
+				8C159626209280370063805F /* Frameworks */,
+				8C159627209280370063805F /* Headers */,
+				8C159628209280370063805F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mozi;
+			productName = Mozi;
+			productReference = 8C15962A209280370063805F /* Mozi.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8C159632209280370063805F /* MoziTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C159641209280370063805F /* Build configuration list for PBXNativeTarget "MoziTests" */;
+			buildPhases = (
+				43A613E0A23A36F6CDF3F242 /* [CP] Check Pods Manifest.lock */,
+				8C15962F209280370063805F /* Sources */,
+				8C159630209280370063805F /* Frameworks */,
+				8C159631209280370063805F /* Resources */,
+				01B307CBE2DBDE08474FC071 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C159636209280370063805F /* PBXTargetDependency */,
+			);
+			name = MoziTests;
+			productName = MoziTests;
+			productReference = 8C159633209280370063805F /* MoziTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8C159621209280370063805F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Stefan Hoschkara";
+				TargetAttributes = {
+					8C159629209280370063805F = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					8C159632209280370063805F = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = 8C159624209280370063805F /* Build configuration list for PBXProject "Mozi" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8C159620209280370063805F;
+			productRefGroup = 8C15962B209280370063805F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C159629209280370063805F /* Mozi */,
+				8C159632209280370063805F /* MoziTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8C159628209280370063805F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CF6EC4620A1B42D003865CD /* Point.geojson in Resources */,
+				8CF6EC4120A1B42D003865CD /* MultiLineStringInGeometry.geojson in Resources */,
+				8CF6EC4820A1B42D003865CD /* Polygon.geojson in Resources */,
+				8CF6EC4320A1B42D003865CD /* MultiPointInGeometry.geojson in Resources */,
+				8CF6EC4420A1B42D003865CD /* MultiPolygon.geojson in Resources */,
+				8CF6EC4020A1B42D003865CD /* MultiLineString.geojson in Resources */,
+				8CF6EC4A20A1B42D003865CD /* PolygonWithHoles.geojson in Resources */,
+				8CF6EC4520A1B42D003865CD /* MultiPolygonInGeometry.geojson in Resources */,
+				8CF6EC4920A1B42D003865CD /* PolygonInGeometry.geojson in Resources */,
+				8CF6EC4720A1B42D003865CD /* PointInGeometry.geojson in Resources */,
+				8CF6EC4220A1B42D003865CD /* MultiPoint.geojson in Resources */,
+				8CF6EC4B20A1B42D003865CD /* PolygonWithHolesInGeometry.geojson in Resources */,
+				8CF6EC3E20A1B42D003865CD /* LineString.geojson in Resources */,
+				8CF6EC3F20A1B42D003865CD /* LineStringInGeometry.geojson in Resources */,
+				8CF6EC3D20A1B42D003865CD /* FeatureCollection.geojson in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C159631209280370063805F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CF6EC3720A1B42D003865CD /* Point.geojson in Resources */,
+				8CF6EC3220A1B42D003865CD /* MultiLineStringInGeometry.geojson in Resources */,
+				8CF6EC3920A1B42D003865CD /* Polygon.geojson in Resources */,
+				8CF6EC3420A1B42D003865CD /* MultiPointInGeometry.geojson in Resources */,
+				8CF6EC3520A1B42D003865CD /* MultiPolygon.geojson in Resources */,
+				8CF6EC3120A1B42D003865CD /* MultiLineString.geojson in Resources */,
+				8CF6EC3B20A1B42D003865CD /* PolygonWithHoles.geojson in Resources */,
+				8CF6EC3620A1B42D003865CD /* MultiPolygonInGeometry.geojson in Resources */,
+				8CF6EC3A20A1B42D003865CD /* PolygonInGeometry.geojson in Resources */,
+				8CF6EC3820A1B42D003865CD /* PointInGeometry.geojson in Resources */,
+				8CF6EC3320A1B42D003865CD /* MultiPoint.geojson in Resources */,
+				8CF6EC3C20A1B42D003865CD /* PolygonWithHolesInGeometry.geojson in Resources */,
+				8CF6EC2F20A1B42D003865CD /* LineString.geojson in Resources */,
+				8CF6EC3020A1B42D003865CD /* LineStringInGeometry.geojson in Resources */,
+				8CF6EC2E20A1B42D003865CD /* FeatureCollection.geojson in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01B307CBE2DBDE08474FC071 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mozi-MoziTests/Pods-Mozi-MoziTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mozi-MoziTests/Pods-Mozi-MoziTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43A613E0A23A36F6CDF3F242 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mozi-MoziTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68A1AF85C9E6EA759307B829 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mozi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8C159625209280370063805F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C1596482092804E0063805F /* Deserializer.swift in Sources */,
+				8C1596492092804E0063805F /* Serializer.swift in Sources */,
+				8C1596472092804E0063805F /* Extensions.swift in Sources */,
+				8C624FDD209CD96000DC4924 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C15962F209280370063805F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C15965B209280620063805F /* MoziTests.swift in Sources */,
+				8C624FDE209CD96000DC4924 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8C159636209280370063805F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C159629209280370063805F /* Mozi */;
+			targetProxy = 8C159635209280370063805F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8C15963C209280370063805F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.0.1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8C15963D209280370063805F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.0.1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8C15963F209280370063805F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 165D95F6A470F89263F47540 /* Pods-Mozi.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8AC55D5G8Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1.0.1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Mozi/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.Mozi;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C159640209280370063805F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1DE36D293044A6097C668A2 /* Pods-Mozi.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8AC55D5G8Q;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1.0.1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Mozi/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.Mozi;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8C159642209280370063805F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D55BB5EAE18A5E17211A2083 /* Pods-Mozi-MoziTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AC55D5G8Q;
+				INFOPLIST_FILE = MoziTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.MoziTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C159643209280370063805F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C976C897A4B0AED4FBE897D /* Pods-Mozi-MoziTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8AC55D5G8Q;
+				INFOPLIST_FILE = MoziTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.MoziTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8C159624209280370063805F /* Build configuration list for PBXProject "Mozi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C15963C209280370063805F /* Debug */,
+				8C15963D209280370063805F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C15963E209280370063805F /* Build configuration list for PBXNativeTarget "Mozi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C15963F209280370063805F /* Debug */,
+				8C159640209280370063805F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C159641209280370063805F /* Build configuration list for PBXNativeTarget "MoziTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C159642209280370063805F /* Debug */,
+				8C159643209280370063805F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8C159621209280370063805F /* Project object */;
+}
