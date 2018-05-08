@@ -1,6 +1,6 @@
 //
-//  MoziTests.swift
-//  MoziTests
+//  PytheasTests.swift
+//  PytheasTests
 //
 //  Created by Stefan Hoschkara on 21.03.18.
 //  Copyright © 2018 Stefan Hoschkara. All rights reserved.
@@ -9,9 +9,9 @@
 import Quick
 import Nimble
 import MapKit
-@testable import Mozi
+@testable import Pytheas
 
-final class MoziTests: QuickSpec {
+final class PytheasTests: QuickSpec {
 
     override func spec() {
         
@@ -21,7 +21,7 @@ final class MoziTests: QuickSpec {
         
         func jsonFromFixture(_ name: String) -> [String:Any] {
             
-            guard let path = Bundle(identifier: "com.hoschkara.Mozi")?.path(forResource: name, ofType: "geojson") else {
+            guard let path = Bundle(identifier: "com.hoschkara.Pytheas")?.path(forResource: name, ofType: "geojson") else {
                 fail("Could not find fixture \(name)")
                 return [:]
             }
@@ -50,14 +50,14 @@ final class MoziTests: QuickSpec {
             return properties
         }
         
-        describe("Mozi") {
+        describe("Pytheas") {
             
             context("handles points") {
                 
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.Point)
-                    guard let point = Mozi.shape(from: json) as? MKPointAnnotation else {
+                    guard let point = Pytheas.shape(from: json) as? MKPointAnnotation else {
                         fail("Could not deserialize point.")
                         return
                     }
@@ -68,11 +68,11 @@ final class MoziTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PointInGeometry)
-                    guard let point = Mozi.shape(from: json) as? MKPointAnnotation else {
+                    guard let point = Pytheas.shape(from: json) as? MKPointAnnotation else {
                         fail("Could not deserialize point.")
                         return
                     }
-                    guard let serialized = Mozi.geoJson(from: point, properties: properties(from: point)) else {
+                    guard let serialized = Pytheas.geoJson(from: point, properties: properties(from: point)) else {
                         fail("Could not serialize point.")
                         return
                     }
@@ -95,7 +95,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture(Fixture.LineString)
-                    guard let line = Mozi.shape(from: json) as? MKPolyline else {
+                    guard let line = Pytheas.shape(from: json) as? MKPolyline else {
                         fail("Could not deserialize line.")
                         return
                     }
@@ -110,11 +110,11 @@ final class MoziTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.LineStringInGeometry)
-                    guard let line = Mozi.shape(from: json) as? MKPolyline else {
+                    guard let line = Pytheas.shape(from: json) as? MKPolyline else {
                         fail("Could not deserialize line.")
                         return
                     }
-                    guard let serialized = Mozi.geoJson(from: line, properties: properties(from: line)) else {
+                    guard let serialized = Pytheas.geoJson(from: line, properties: properties(from: line)) else {
                         fail("Could not serialize line.")
                         return
                     }
@@ -139,7 +139,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.Polygon)
-                    guard let polygon = Mozi.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
@@ -154,12 +154,12 @@ final class MoziTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PolygonInGeometry)
-                    guard let polygon = Mozi.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
                     
-                    guard let serialized = Mozi.geoJson(from: polygon, properties: properties(from: polygon)) else {
+                    guard let serialized = Pytheas.geoJson(from: polygon, properties: properties(from: polygon)) else {
                         fail("Could not serialize polygon.")
                         return
                     }
@@ -183,7 +183,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.PolygonWithHoles)
-                    guard let polygon = Mozi.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
@@ -212,12 +212,12 @@ final class MoziTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PolygonWithHolesInGeometry)
-                    guard let polygon = Mozi.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
                     
-                    guard let serialized = Mozi.geoJson(from: polygon, properties: properties(from: polygon)) else {
+                    guard let serialized = Pytheas.geoJson(from: polygon, properties: properties(from: polygon)) else {
                         fail("Could not serialize polygon.")
                         return
                     }
@@ -258,7 +258,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.MultiPoint)
-                    guard let points = Mozi.shape(from: json) as? [MKPointAnnotation] else {
+                    guard let points = Pytheas.shape(from: json) as? [MKPointAnnotation] else {
                         fail("Could not deserialize MultiPoint.")
                         return
                     }
@@ -273,7 +273,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.MultiPointInGeometry)
-                    guard let points = Mozi.shape(from: json) as? [MKPointAnnotation] else {
+                    guard let points = Pytheas.shape(from: json) as? [MKPointAnnotation] else {
                         fail("Could not deserialize MultiPoint.")
                         return
                     }
@@ -295,7 +295,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture("MultiLineString")
-                    guard let lines = Mozi.shape(from: json) as? [MKPolyline] else {
+                    guard let lines = Pytheas.shape(from: json) as? [MKPolyline] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -313,7 +313,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.MultiLineStringInGeometry)
-                    guard let lines = Mozi.shape(from: json) as? [MKPolyline] else {
+                    guard let lines = Pytheas.shape(from: json) as? [MKPolyline] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -334,7 +334,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture(Fixture.MultiPolygon)
-                    guard let polygons = Mozi.shape(from: json) as? [MKPolygon] else {
+                    guard let polygons = Pytheas.shape(from: json) as? [MKPolygon] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -366,7 +366,7 @@ final class MoziTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.MultiPolygonInGeometry)
-                    guard let polygons = Mozi.shape(from: json) as? [MKPolygon] else {
+                    guard let polygons = Pytheas.shape(from: json) as? [MKPolygon] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -402,12 +402,12 @@ final class MoziTests: QuickSpec {
                 it("is deserializes and serializes") {
 
                     let json = jsonFromFixture(Fixture.FeatureCollection)
-                    guard let features = Mozi.shapes(from: json) as? [MKShape] else {
+                    guard let features = Pytheas.shapes(from: json) as? [MKShape] else {
                         fail("Could not deserialize feature collection.")
                         return
                     }
                     
-                    guard let serialized = Mozi.geoJson(from: features, properties: features.map { properties(from: $0) }) else {
+                    guard let serialized = Pytheas.geoJson(from: features, properties: features.map { properties(from: $0) }) else {
                         fail("Could not serialize feature collection.")
                         return
                     }

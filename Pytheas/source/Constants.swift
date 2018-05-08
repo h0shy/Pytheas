@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  Mozi
+//  Pytheas
 //
 //  Created by Stefan Hoschkara on 04.05.18.
 //  Copyright © 2018 Stefan Hoschkara. All rights reserved.

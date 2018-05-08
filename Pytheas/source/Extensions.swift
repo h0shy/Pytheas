@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  Mozi
+//  Pytheas
 //
 //  Created by Stefan Hoschkara on 25.03.18.
 //  Copyright © 2018 Stefan Hoschkara. All rights reserved.

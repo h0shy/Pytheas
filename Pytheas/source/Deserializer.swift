@@ -1,6 +1,6 @@
 //
 //  Deserializer.swift
-//  Mozi
+//  Pytheas
 //
 //  Created by Stefan Hoschkara on 21.03.18.
 //  Copyright © 2018 Stefan Hoschkara. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-final class Mozi {
+final class Pytheas {
     
     public static func shape(from feature: [String:Any]) -> Any? {
         
@@ -21,12 +21,12 @@ final class Mozi {
         }
         
         switch type {
-        case Value.Point: return Mozi.point(from: feature)
-        case Value.LineString: return Mozi.lineString(from: feature)
-        case Value.Polygon: return Mozi.polygon(from: feature)
-        case Value.MultiPoint: return Mozi.multiPoint(from: feature)
-        case Value.MultiLineString: return Mozi.multiLineString(from: feature)
-        case Value.MultiPolygon: return Mozi.multiPolygon(from: feature)
+        case Value.Point: return Pytheas.point(from: feature)
+        case Value.LineString: return Pytheas.lineString(from: feature)
+        case Value.Polygon: return Pytheas.polygon(from: feature)
+        case Value.MultiPoint: return Pytheas.multiPoint(from: feature)
+        case Value.MultiLineString: return Pytheas.multiLineString(from: feature)
+        case Value.MultiPolygon: return Pytheas.multiPolygon(from: feature)
         default: return nil
         }
     }
@@ -38,7 +38,7 @@ final class Mozi {
         
         var shapes: [Any] = []
         for feature in features {
-            guard let shape =  Mozi.shape(from: feature) else { continue }
+            guard let shape =  Pytheas.shape(from: feature) else { continue }
             if let subShapes = shape as? [Any] {
                 shapes.append(contentsOf: subShapes)
             } else {
@@ -51,7 +51,7 @@ final class Mozi {
     
     private static func point(from feature:[String:Any]) -> MKPointAnnotation? {
         
-        guard let figures = Mozi.unwrapCoordinates(from: feature) as? [Double],
+        guard let figures = Pytheas.unwrapCoordinates(from: feature) as? [Double],
               let coordinate = coordinate(from: figures) else { return nil }
 
         let point = MKPointAnnotation()
@@ -72,9 +72,9 @@ final class Mozi {
     
     private static func lineString(from feature:[String:Any]) -> MKPolyline? {
         
-        guard let pairs = Mozi.unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
+        guard let pairs = Pytheas.unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
         
-        var coordinates = pairs.compactMap { Mozi.coordinate(from: $0) }
+        var coordinates = pairs.compactMap { Pytheas.coordinate(from: $0) }
         let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
         add(properties: feature[Key.properties] as? [String:Any], to: polyline)
         
@@ -83,12 +83,12 @@ final class Mozi {
     
     private static func polygon(from feature:[String:Any]) -> MKPolygon? {
         
-        guard let sets = Mozi.unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
+        guard let sets = Pytheas.unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
         
         var polygons: [MKPolygon] = []
         for pairs in sets {
             
-            var coordinates = pairs.compactMap { Mozi.coordinate(from: $0) }
+            var coordinates = pairs.compactMap { Pytheas.coordinate(from: $0) }
             let polygon = MKPolygon(coordinates: &coordinates, count: coordinates.count)
             polygons.append(polygon)
         }
@@ -110,7 +110,7 @@ final class Mozi {
     
     private static func multiPoint(from feature:[String:Any]) -> [MKPointAnnotation]? {
         
-        guard let pairs = Mozi.unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
+        guard let pairs = Pytheas.unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
         let properties = feature[Key.properties] as? [String:Any]
         
         var points: [MKPointAnnotation?] = []
@@ -134,7 +134,7 @@ final class Mozi {
     
     private static func multiLineString(from feature:[String:Any]) -> [MKPolyline]? {
         
-        guard let sets = Mozi.unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
+        guard let sets = Pytheas.unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
         let properties = feature[Key.properties] as? [String:Any]
         
         var lines: [MKPolyline?] = []
@@ -158,7 +158,7 @@ final class Mozi {
     
     private static func multiPolygon(from feature:[String:Any]) -> [MKPolygon]? {
         
-        guard let groups = Mozi.unwrapCoordinates(from: feature) as? [[[[Double]]]] else { return nil }
+        guard let groups = Pytheas.unwrapCoordinates(from: feature) as? [[[[Double]]]] else { return nil }
         let properties = feature[Key.properties] as? [String:Any]
         
         var polygons: [MKPolygon?] = []

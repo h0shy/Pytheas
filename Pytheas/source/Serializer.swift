@@ -1,6 +1,6 @@
 //
 //  Serializer.swift
-//  Mozi
+//  Pytheas
 //
 //  Created by Stefan Hoschkara on 29.03.18.
 //  Copyright © 2018 Stefan Hoschkara. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-extension Mozi {
+extension Pytheas {
     
     public static func geoJson(from shape: MKShape, properties: [String:Any]) -> [String:Any]? {
         
@@ -17,9 +17,9 @@ extension Mozi {
         
         let geometryJson: [String:Any]?
         switch shape {
-        case let point as MKPointAnnotation: geometryJson = Mozi.geoJSON(from: point)
-        case let line as MKPolyline: geometryJson = Mozi.geoJSON(from: line)
-        case let polygon as MKPolygon: geometryJson = Mozi.geoJSON(from: polygon)
+        case let point as MKPointAnnotation: geometryJson = Pytheas.geoJSON(from: point)
+        case let line as MKPolyline: geometryJson = Pytheas.geoJSON(from: line)
+        case let polygon as MKPolygon: geometryJson = Pytheas.geoJSON(from: polygon)
         default: return nil
         }
         
@@ -38,7 +38,7 @@ extension Mozi {
         var features: [[String:Any]?] = []
         
         for (index, shape) in shapes.enumerated() {
-            features.append(Mozi.geoJson(from: shape, properties: properties[index]))
+            features.append(Pytheas.geoJson(from: shape, properties: properties[index]))
         }
         
         featuresJson[Key.type] = Value.FeatureCollection
@@ -60,7 +60,7 @@ extension Mozi {
         
         var pointsJson: [String:Any] = [:]
         pointsJson[Key.type] = Value.LineString
-        pointsJson[Key.coordinates] = line.pointAnnotations.compactMap { Mozi.geoJSON(from: $0) }.map { $0[Key.coordinates]}
+        pointsJson[Key.coordinates] = line.pointAnnotations.compactMap { Pytheas.geoJSON(from: $0) }.map { $0[Key.coordinates]}
         
         return pointsJson
     }
@@ -76,7 +76,7 @@ extension Mozi {
         }
         
         for polygon in polygons {
-            sets.append(polygon.pointAnnotations.compactMap { Mozi.geoJSON(from: $0) }.map { $0[Key.coordinates]} )
+            sets.append(polygon.pointAnnotations.compactMap { Pytheas.geoJSON(from: $0) }.map { $0[Key.coordinates]} )
         }
         
         polygonJson[Key.type] = Value.Polygon
