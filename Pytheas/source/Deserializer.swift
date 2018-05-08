@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-final class Pytheas {
+public final class Pytheas {
     
     public static func shape(from feature: [String:Any]) -> Any? {
         
