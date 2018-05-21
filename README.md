@@ -1,22 +1,21 @@
 # Pytheas
 
-[![codecov.io](https://codecov.io/github/Pytheas/Pytheas/coverage.svg?branch=master)](https://codecov.io/github/Pytheas/Pytheas?branch=master)
-[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Pytheas)](https://cocoapods.org/pods/Pytheas)
+<!--[![codecov.io](https://codecov.io/github/Pytheas/Pytheas/coverage.svg?branch=master)](https://codecov.io/github/Pytheas/Pytheas?branch=master)-->
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Pytheas.svg)](https://cocoapods.org/pods/Pytheas)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License MIT](https://img.shields.io/npm/l/express.svg?style=flat)](https://en.wikipedia.org/wiki/MIT_License)
 
 GeoJSON Serializer and Deserializer for MapKit and GoogleMaps.
 
 ## Features
 
-### Fit for Apple & Google Maps
-The output model is generic, so you can instantiate MapKit and GoogleMaps objects.
+### Works with MapKit and Google Maps
+The output model is generic, so you can instantiate MapKit and GoogleMaps points, lines, and polygons.
 
 ### 100% Tested
 To guarantee stability, every line of code in this lib is tested.
 
-### Continuously Updated
+### Updated and maintained
 Pytheas will be continuously converted to the up-to-date Swift Syntax and best practices. Suggestions and Pull Requests are welcome!
 
 ## Getting Started
