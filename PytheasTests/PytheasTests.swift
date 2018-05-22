@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-import MapKit
+//import MapKit
 @testable import Pytheas
 
 final class PytheasTests: QuickSpec {
@@ -41,7 +41,7 @@ final class PytheasTests: QuickSpec {
             return [:]
         }
         
-        func properties(from shape: MKShape) -> [String:Any] {
+        func properties(from shape: Shape) -> [String:Any] {
             
             var properties: [String:Any] = [:]
             properties[Key.title] = shape.title
@@ -57,7 +57,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.Point)
-                    guard let point = Pytheas.shape(from: json) as? MKPointAnnotation else {
+                    guard let point = Pytheas.shape(from: json) as? Point else {
                         fail("Could not deserialize point.")
                         return
                     }
@@ -68,7 +68,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PointInGeometry)
-                    guard let point = Pytheas.shape(from: json) as? MKPointAnnotation else {
+                    guard let point = Pytheas.shape(from: json) as? Point else {
                         fail("Could not deserialize point.")
                         return
                     }
@@ -95,13 +95,13 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture(Fixture.LineString)
-                    guard let line = Pytheas.shape(from: json) as? MKPolyline else {
+                    guard let line = Pytheas.shape(from: json) as? Line else {
                         fail("Could not deserialize line.")
                         return
                     }
 
-                    expect(line.pointAnnotations.count) == (json[Key.coordinates] as? [[Double]])?.count
-                    for (pointIndex, point) in line.pointAnnotations.enumerated() {
+                    expect(line.points.count) == (json[Key.coordinates] as? [[Double]])?.count
+                    for (pointIndex, point) in line.points.enumerated() {
                         expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                         expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
@@ -110,7 +110,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.LineStringInGeometry)
-                    guard let line = Pytheas.shape(from: json) as? MKPolyline else {
+                    guard let line = Pytheas.shape(from: json) as? Line else {
                         fail("Could not deserialize line.")
                         return
                     }
@@ -122,8 +122,8 @@ final class PytheasTests: QuickSpec {
                     expect(line.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
                     expect(line.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
                     
-                    expect(line.pointAnnotations.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?.count
-                    for (pointIndex, point) in line.pointAnnotations.enumerated() {
+                    expect(line.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?.count
+                    for (pointIndex, point) in line.points.enumerated() {
                         
                         expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                         expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
@@ -139,13 +139,13 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.Polygon)
-                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
                     
-                    expect(polygon.pointAnnotations.count) == (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
-                    for (pointIndex, point) in polygon.pointAnnotations.enumerated() {
+                    expect(polygon.points.count) == (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
+                    for (pointIndex, point) in polygon.points.enumerated() {
                         expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                         expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
@@ -154,7 +154,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PolygonInGeometry)
-                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
@@ -167,8 +167,8 @@ final class PytheasTests: QuickSpec {
                     expect(polygon.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
                     expect(polygon.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
                     
-                    expect(polygon.pointAnnotations.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
-                    for (pointIndex, point) in polygon.pointAnnotations.enumerated() {
+                    expect(polygon.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
+                    for (pointIndex, point) in polygon.points.enumerated() {
                         expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                         expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         
@@ -183,26 +183,21 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.PolygonWithHoles)
-                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
                     
-                    expect(polygon.pointAnnotations.count) == (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
-                    for (pointIndex, point) in polygon.pointAnnotations.enumerated() {
+                    expect(polygon.points.count) == (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
+                    for (pointIndex, point) in polygon.points.enumerated() {
                         expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                         expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
-                    
-                    guard let interiors = polygon.interiorPolygons else {
-                        fail("Could not get interior polygons.")
-                        return
-                    }
 
-                    expect(interiors.count+1) == (json[Key.coordinates] as? [[[Double]]])?.count
-                    for (interiorIndex, interior) in interiors.enumerated() {
-                        expect(interior.pointAnnotations.count) == (json[Key.coordinates] as? [[[Double]]])?[interiorIndex+1].count
-                        for (pointIndex, point) in interior.pointAnnotations.enumerated() {
+                    expect(polygon.interiorPolygons.count+1) == (json[Key.coordinates] as? [[[Double]]])?.count
+                    for (interiorIndex, interior) in polygon.interiorPolygons.enumerated() {
+                        expect(interior.points.count) == (json[Key.coordinates] as? [[[Double]]])?[interiorIndex+1].count
+                        for (pointIndex, point) in interior.points.enumerated() {
                             expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                             expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
@@ -212,7 +207,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PolygonWithHolesInGeometry)
-                    guard let polygon = Pytheas.shape(from: json) as? MKPolygon else {
+                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
@@ -225,8 +220,8 @@ final class PytheasTests: QuickSpec {
                     expect(polygon.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
                     expect(polygon.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
                     
-                    expect(polygon.pointAnnotations.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
-                    for (pointIndex, point) in polygon.pointAnnotations.enumerated() {
+                    expect(polygon.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
+                    for (pointIndex, point) in polygon.points.enumerated() {
                         expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                         expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         
@@ -234,15 +229,10 @@ final class PytheasTests: QuickSpec {
                         expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
                     
-                    guard let interiors = polygon.interiorPolygons else {
-                        fail("Could not get interior polygons.")
-                        return
-                    }
-                    
-                    expect(interiors.count+1) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?.count
-                    for (interiorIndex, interior) in interiors.enumerated() {
-                        expect(interior.pointAnnotations.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex].count
-                        for (pointIndex, point) in interior.pointAnnotations.enumerated() {
+                    expect(polygon.interiorPolygons.count+1) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?.count
+                    for (interiorIndex, interior) in polygon.interiorPolygons.enumerated() {
+                        expect(interior.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex].count
+                        for (pointIndex, point) in interior.points.enumerated() {
                             expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                             expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                             
@@ -258,7 +248,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.MultiPoint)
-                    guard let points = Pytheas.shape(from: json) as? [MKPointAnnotation] else {
+                    guard let points = Pytheas.shape(from: json) as? [Point] else {
                         fail("Could not deserialize MultiPoint.")
                         return
                     }
@@ -273,7 +263,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.MultiPointInGeometry)
-                    guard let points = Pytheas.shape(from: json) as? [MKPointAnnotation] else {
+                    guard let points = Pytheas.shape(from: json) as? [Point] else {
                         fail("Could not deserialize MultiPoint.")
                         return
                     }
@@ -295,15 +285,15 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture("MultiLineString")
-                    guard let lines = Pytheas.shape(from: json) as? [MKPolyline] else {
+                    guard let lines = Pytheas.shape(from: json) as? [Line] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
 
                     expect(lines.count) == (json[Key.coordinates] as? [[[Double]]])?.count
                     for (lineIndex, line) in lines.enumerated() {
-                        expect(line.pointAnnotations.count) == (json[Key.coordinates] as? [[[Double]]])?[lineIndex].count
-                        for (pointIndex, point) in line.pointAnnotations.enumerated() {
+                        expect(line.points.count) == (json[Key.coordinates] as? [[[Double]]])?[lineIndex].count
+                        for (pointIndex, point) in line.points.enumerated() {
                             expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                             expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
@@ -313,15 +303,15 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.MultiLineStringInGeometry)
-                    guard let lines = Pytheas.shape(from: json) as? [MKPolyline] else {
+                    guard let lines = Pytheas.shape(from: json) as? [Line] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
 
                     expect(lines.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?.count
                     for (lineIndex, line) in lines.enumerated() {
-                        expect(line.pointAnnotations.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex].count
-                        for (pointIndex, point) in line.pointAnnotations.enumerated() {
+                        expect(line.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex].count
+                        for (pointIndex, point) in line.points.enumerated() {
                             expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                             expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
@@ -334,28 +324,23 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture(Fixture.MultiPolygon)
-                    guard let polygons = Pytheas.shape(from: json) as? [MKPolygon] else {
+                    guard let polygons = Pytheas.shape(from: json) as? [Polygon] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
 
                     expect(polygons.count) == (json[Key.coordinates] as? [[[[Double]]]])?.count
                     for (polygonIndex, polygon) in polygons.enumerated() {
-                        expect(polygon.pointAnnotations.count) == (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex].count
-                        for (pointIndex, point) in polygon.pointAnnotations.enumerated() {
+                        expect(polygon.points.count) == (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex].count
+                        for (pointIndex, point) in polygon.points.enumerated() {
                             expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                             expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
 
-                        guard let interiors = polygon.interiorPolygons else {
-                            fail("Could not get interior polygons.")
-                            return
-                        }
-
-                        expect(interiors.count+1) == (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex].count
-                        for (interiorIndex, interior) in interiors.enumerated() {
-                            expect(interior.pointAnnotations.count) == (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1].count
-                            for (pointIndex, point) in interior.pointAnnotations.enumerated() {
+                        expect(polygon.interiorPolygons.count+1) == (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex].count
+                        for (interiorIndex, interior) in polygon.interiorPolygons.enumerated() {
+                            expect(interior.points.count) == (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1].count
+                            for (pointIndex, point) in interior.points.enumerated() {
                                 expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                                 expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", (json[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                             }
@@ -366,29 +351,23 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.MultiPolygonInGeometry)
-                    guard let polygons = Pytheas.shape(from: json) as? [MKPolygon] else {
+                    guard let polygons = Pytheas.shape(from: json) as? [Polygon] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
 
                     expect(polygons.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?.count
                     for (polygonIndex, polygon) in polygons.enumerated() {
-                        expect(polygon.pointAnnotations.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex].count
-                        for (pointIndex, point) in polygon.pointAnnotations.enumerated() {
+                        expect(polygon.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex].count
+                        for (pointIndex, point) in polygon.points.enumerated() {
                             expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                             expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
 
-
-                        guard let interiors = polygon.interiorPolygons else {
-                            fail("Could not get interior polygons.")
-                            return
-                        }
-
-                        expect(interiors.count+1) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex].count
-                        for (interiorIndex, interior) in interiors.enumerated() {
-                            expect(interior.pointAnnotations.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1].count
-                            for (pointIndex, point) in interior.pointAnnotations.enumerated() {
+                        expect(polygon.interiorPolygons.count+1) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex].count
+                        for (interiorIndex, interior) in polygon.interiorPolygons.enumerated() {
+                            expect(interior.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1].count
+                            for (pointIndex, point) in interior.points.enumerated() {
                                 expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
                                 expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                             }
@@ -402,7 +381,7 @@ final class PytheasTests: QuickSpec {
                 it("is deserializes and serializes") {
 
                     let json = jsonFromFixture(Fixture.FeatureCollection)
-                    guard let features = Pytheas.shapes(from: json) as? [MKShape] else {
+                    guard let features = Pytheas.shapes(from: json) as? [Shape] else {
                         fail("Could not deserialize feature collection.")
                         return
                     }
@@ -412,7 +391,7 @@ final class PytheasTests: QuickSpec {
                         return
                     }
                     
-                    let first = features.first as? MKPointAnnotation
+                    let first = features.first as? Point
                     expect(first?.title) == ((json[Key.features] as? [[String:Any]])?[0][Key.properties] as? [String:Any])?[Key.title] as? String
                     expect(first?.subtitle) == ((json[Key.features] as? [[String:Any]])?[0][Key.properties] as? [String:Any])?[Key.subtitle] as? String
                     expect(first?.coordinate.latitude) == (((json[Key.features] as? [[String:Any]])?[0][Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
@@ -423,13 +402,13 @@ final class PytheasTests: QuickSpec {
                     expect(first?.coordinate.latitude) == (((serialized[Key.features] as? [[String:Any]])?[0][Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
                     expect(first?.coordinate.longitude) == (((serialized[Key.features] as? [[String:Any]])?[0][Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
                     
-                    let second = features[1] as? MKPointAnnotation
+                    let second = features[1] as? Point
                     expect(second?.title) == ((json[Key.features] as? [[String:Any]])?[1][Key.properties] as? [String:Any])?[Key.title] as? String
                     expect(second?.subtitle) == ((json[Key.features] as? [[String:Any]])?[1][Key.properties] as? [String:Any])?[Key.subtitle] as? String
                     expect(second?.coordinate.latitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[0][latitudeIndex]
                     expect(second?.coordinate.longitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[0][longitudeIndex]
                     
-                    let third = features[2] as? MKPointAnnotation
+                    let third = features[2] as? Point
                     expect(third?.coordinate.latitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[1][latitudeIndex]
                     expect(third?.coordinate.longitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[1][longitudeIndex]
                 }

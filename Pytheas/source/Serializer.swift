@@ -7,19 +7,18 @@
 //
 
 import Foundation
-import MapKit
 
 extension Pytheas {
     
-    public static func geoJson(from shape: MKShape, properties: [String:Any]) -> [String:Any]? {
+    public static func geoJson(from shape: Shape, properties: [String:Any]) -> [String:Any]? {
         
         var featureJson: [String:Any] = [:]
         
         let geometryJson: [String:Any]?
         switch shape {
-        case let point as MKPointAnnotation: geometryJson = Pytheas.geoJSON(from: point)
-        case let line as MKPolyline: geometryJson = Pytheas.geoJSON(from: line)
-        case let polygon as MKPolygon: geometryJson = Pytheas.geoJSON(from: polygon)
+        case let point as Point: geometryJson = Pytheas.geoJSON(from: point)
+        case let line as Line: geometryJson = Pytheas.geoJSON(from: line)
+        case let polygon as Polygon: geometryJson = Pytheas.geoJSON(from: polygon)
         default: return nil
         }
         
@@ -30,7 +29,7 @@ extension Pytheas {
         return featureJson
     }
     
-    public static func geoJson(from shapes: [MKShape], properties: [[String:Any]]) -> [String:Any]? {
+    public static func geoJson(from shapes: [Shape], properties: [[String:Any]]) -> [String:Any]? {
         
         guard shapes.count == properties.count else { return nil }
         
@@ -47,7 +46,7 @@ extension Pytheas {
         return featuresJson
     }
     
-    private static func geoJSON(from point: MKPointAnnotation) -> [String:Any]? {
+    private static func geoJSON(from point: Point) -> [String:Any]? {
         
         var pointJson: [String:Any] = [:]
         pointJson[Key.type] = Value.Point
@@ -56,27 +55,29 @@ extension Pytheas {
         return pointJson
     }
 
-    private static func geoJSON(from line: MKPolyline) -> [String:Any]? {
+    private static func geoJSON(from line: Line) -> [String:Any]? {
+        
+        assert(line.points.count >= 2, "Line needs at least two points.")
         
         var pointsJson: [String:Any] = [:]
         pointsJson[Key.type] = Value.LineString
-        pointsJson[Key.coordinates] = line.pointAnnotations.compactMap { Pytheas.geoJSON(from: $0) }.map { $0[Key.coordinates]}
+        pointsJson[Key.coordinates] = line.points.compactMap { Pytheas.geoJSON(from: $0) }.map { $0[Key.coordinates]}
         
         return pointsJson
     }
     
-    private static func geoJSON(from polygon: MKPolygon) -> [String:Any]? {
+    private static func geoJSON(from polygon: Polygon) -> [String:Any]? {
         
+        assert(polygon.points.count >= 3, "Line needs at least three points.")
+
         var polygonJson: [String:Any] = [:]
         var sets: [Any] = []
         var polygons = [polygon]
         
-        if let interiors = polygon.interiorPolygons {
-            polygons.append(contentsOf: interiors)
-        }
+        polygons.append(contentsOf: polygon.interiorPolygons)
         
         for polygon in polygons {
-            sets.append(polygon.pointAnnotations.compactMap { Pytheas.geoJSON(from: $0) }.map { $0[Key.coordinates]} )
+            sets.append(polygon.points.compactMap { Pytheas.geoJSON(from: $0) }.map { $0[Key.coordinates]} )
         }
         
         polygonJson[Key.type] = Value.Polygon

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MapKit
+import CoreLocation
 
 public final class Pytheas {
     
@@ -21,12 +21,12 @@ public final class Pytheas {
         }
         
         switch type {
-        case Value.Point: return Pytheas.point(from: feature)
-        case Value.LineString: return Pytheas.lineString(from: feature)
-        case Value.Polygon: return Pytheas.polygon(from: feature)
-        case Value.MultiPoint: return Pytheas.multiPoint(from: feature)
-        case Value.MultiLineString: return Pytheas.multiLineString(from: feature)
-        case Value.MultiPolygon: return Pytheas.multiPolygon(from: feature)
+        case Value.Point: return point(from: feature)
+        case Value.LineString: return lineString(from: feature)
+        case Value.Polygon: return polygon(from: feature)
+        case Value.MultiPoint: return multiPoint(from: feature)
+        case Value.MultiLineString: return multiLineString(from: feature)
+        case Value.MultiPolygon: return multiPolygon(from: feature)
         default: return nil
         }
     }
@@ -38,7 +38,7 @@ public final class Pytheas {
         
         var shapes: [Any] = []
         for feature in features {
-            guard let shape =  Pytheas.shape(from: feature) else { continue }
+            guard let shape =  shape(from: feature) else { continue }
             if let subShapes = shape as? [Any] {
                 shapes.append(contentsOf: subShapes)
             } else {
@@ -49,71 +49,62 @@ public final class Pytheas {
         return shapes
     }
     
-    private static func point(from feature:[String:Any]) -> MKPointAnnotation? {
+    private static func point(from feature:[String:Any]) -> Point? {
         
-        guard let figures = Pytheas.unwrapCoordinates(from: feature) as? [Double],
+        guard let figures = unwrapCoordinates(from: feature) as? [Double],
               let coordinate = coordinate(from: figures) else { return nil }
 
-        let point = MKPointAnnotation()
-        point.coordinate = coordinate
-        add(properties: feature[Key.properties] as? [String:Any], to: point)
-        
-        return point
+        return Point(coordinate: coordinate,
+                     title: title(from: feature[Key.properties] as? [String:Any]),
+                     subtitle: subtitle(from: feature[Key.properties] as? [String:Any]))
     }
     
-    private static func coordinate(from coordinates: [Double]) -> CLLocationCoordinate2D? {
+    private static func lineString(from feature:[String:Any]) -> Line? {
         
-        guard coordinates.count == 2,
-              let longitude = coordinates.first,
-              let latitude = coordinates.last else { return nil }
+        guard let pairs = unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
+        assert(pairs.count >= 2, "Line needs at least two points.")
         
-        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        return Line(coordinates: pairs.compactMap { coordinate(from: $0) },
+                    title: title(from: feature[Key.properties] as? [String:Any]),
+                    subtitle: subtitle(from: feature[Key.properties] as? [String:Any]))
     }
     
-    private static func lineString(from feature:[String:Any]) -> MKPolyline? {
+    private static func polygon(from feature:[String:Any]) -> Polygon? {
         
-        guard let pairs = Pytheas.unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
-        
-        var coordinates = pairs.compactMap { Pytheas.coordinate(from: $0) }
-        let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-        add(properties: feature[Key.properties] as? [String:Any], to: polyline)
-        
-        return polyline
-    }
-    
-    private static func polygon(from feature:[String:Any]) -> MKPolygon? {
-        
-        guard let sets = Pytheas.unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
-        
-        var polygons: [MKPolygon] = []
+        guard let sets = unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
+
+        var all: [Polygon] = []
         for pairs in sets {
             
-            var coordinates = pairs.compactMap { Pytheas.coordinate(from: $0) }
-            let polygon = MKPolygon(coordinates: &coordinates, count: coordinates.count)
-            polygons.append(polygon)
+            let polygon = Polygon(coordinates: pairs.compactMap { coordinate(from: $0) },
+                                  interiorPolygons: [],
+                                  title: title(from: feature[Key.properties] as? [String:Any]),
+                                  subtitle: subtitle(from: feature[Key.properties] as? [String:Any]))
+            all.append(polygon)
         }
         
-        let polygon: MKPolygon
-        switch polygons.count {
+        let polygon: Polygon
+        switch all.count {
         case 0: return nil
-        case 1: polygon = polygons.first!
+        case 1: polygon = all.first!
         default:
-            let exterior = polygons.first!
-            let interiors = Array(polygons[1...polygons.count-1])
-            polygon = MKPolygon(points: exterior.points(), count: exterior.pointCount, interiorPolygons: interiors)
+            let exterior = all.first!
+            let interiors = Array(all[1...all.count-1])
+            polygon = Polygon(coordinates: exterior.coordinates,
+                              interiorPolygons: interiors,
+                              title: title(from: feature[Key.properties] as? [String:Any]),
+                              subtitle: subtitle(from: feature[Key.properties] as? [String:Any]))
         }
-        
-        add(properties: feature[Key.properties] as? [String:Any], to: polygon)
         
         return polygon
     }
     
-    private static func multiPoint(from feature:[String:Any]) -> [MKPointAnnotation]? {
+    private static func multiPoint(from feature:[String:Any]) -> [Point]? {
         
-        guard let pairs = Pytheas.unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
+        guard let pairs = unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
         let properties = feature[Key.properties] as? [String:Any]
         
-        var points: [MKPointAnnotation?] = []
+        var points: [Point?] = []
 
         for pair in pairs {
             var subFeature: [String:Any] = [:]
@@ -132,12 +123,12 @@ public final class Pytheas {
         return points.compactMap {$0}
     }
     
-    private static func multiLineString(from feature:[String:Any]) -> [MKPolyline]? {
+    private static func multiLineString(from feature:[String:Any]) -> [Line]? {
         
-        guard let sets = Pytheas.unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
+        guard let sets = unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
         let properties = feature[Key.properties] as? [String:Any]
         
-        var lines: [MKPolyline?] = []
+        var lines: [Line?] = []
         
         for set in sets {
             var subFeature: [String:Any] = [:]
@@ -156,12 +147,12 @@ public final class Pytheas {
         return lines.compactMap {$0}
     }
     
-    private static func multiPolygon(from feature:[String:Any]) -> [MKPolygon]? {
+    private static func multiPolygon(from feature:[String:Any]) -> [Polygon]? {
         
-        guard let groups = Pytheas.unwrapCoordinates(from: feature) as? [[[[Double]]]] else { return nil }
+        guard let groups = unwrapCoordinates(from: feature) as? [[[[Double]]]] else { return nil }
         let properties = feature[Key.properties] as? [String:Any]
         
-        var polygons: [MKPolygon?] = []
+        var polygons: [Polygon?] = []
 
         for group in groups {
             var subFeature: [String:Any] = [:]
@@ -182,10 +173,21 @@ public final class Pytheas {
     
     // MARK: - Helper
     
-    private static func add(properties: [String:Any]?, to shape: MKShape)  {
+    private static func coordinate(from coordinates: [Double]) -> CLLocationCoordinate2D? {
         
-        shape.title = properties?[Key.title] as? String
-        shape.subtitle = properties?[Key.subtitle] as? String
+        guard coordinates.count == 2,
+            let longitude = coordinates.first,
+            let latitude = coordinates.last else { return nil }
+        
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    private static func title(from properties: [String:Any]?) -> String? {
+        return properties?[Key.title] as? String
+    }
+    
+    private static func subtitle(from properties: [String:Any]?) -> String? {
+        return properties?[Key.subtitle] as? String
     }
     
     private static func unwrapCoordinates(from feature: [String:Any]) -> Any? {
