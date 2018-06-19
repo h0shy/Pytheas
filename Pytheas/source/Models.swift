@@ -35,13 +35,6 @@ struct Line: Shape {
     let title: String?
     let subtitle: String?
     
-//    init(coordinates: [CLLocationCoordinate2D], title: String? = nil, subtitle: String? = nil) {
-//
-//        self.coordinates = coordinates
-//        self.title = title
-//        self.subtitle = subtitle
-//    }
-    
     var points: [Point] { return coordinates.map { Point(coordinate: $0) } }
 }
 
@@ -51,14 +44,6 @@ struct Polygon: Shape {
     let interiorPolygons: [Polygon]
     let title: String?
     let subtitle: String?
-    
-//    init(coordinates: [CLLocationCoordinate2D], interiorPolygons: [Polygon], title: String? = nil, subtitle: String? = nil) {
-//
-//        self.coordinates = coordinates
-//        self.interiorPolygons = interiorPolygons
-//        self.title = title
-//        self.subtitle = subtitle
-//    }
     
     var points: [Point] { return coordinates.map { Point(coordinate: $0) } }
 }
