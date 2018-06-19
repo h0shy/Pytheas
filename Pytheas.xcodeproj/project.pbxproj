@@ -10,7 +10,6 @@
 		58CE9FB758029BFD1F91BDB3 /* Pods_Pytheas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48E51D5FDE76B579BD828B0 /* Pods_Pytheas.framework */; };
 		8C159634209280370063805F /* Pytheas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C15962A209280370063805F /* Pytheas.framework */; };
 		8C15963B209280370063805F /* Pytheas.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C15962D209280370063805F /* Pytheas.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8C1596472092804E0063805F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596442092804E0063805F /* Extensions.swift */; };
 		8C1596482092804E0063805F /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596452092804E0063805F /* Deserializer.swift */; };
 		8C1596492092804E0063805F /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596462092804E0063805F /* Serializer.swift */; };
 		8C4AA1AA20A20D75009C20EC /* PytheasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4AA1A920A20D74009C20EC /* PytheasTests.swift */; };
@@ -72,7 +71,6 @@
 		8C15962E209280370063805F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C159633209280370063805F /* PytheasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PytheasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C15963A209280370063805F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8C1596442092804E0063805F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8C1596452092804E0063805F /* Deserializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deserializer.swift; sourceTree = "<group>"; };
 		8C1596462092804E0063805F /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		8C4AA1A920A20D74009C20EC /* PytheasTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PytheasTests.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			children = (
 				8C624FDC209CD96000DC4924 /* Constants.swift */,
 				8C1596452092804E0063805F /* Deserializer.swift */,
-				8C1596442092804E0063805F /* Extensions.swift */,
 				8C1596462092804E0063805F /* Serializer.swift */,
 				8C4AA1AB20A2DBEC009C20EC /* Models.swift */,
 			);
@@ -424,7 +421,6 @@
 			files = (
 				8C1596482092804E0063805F /* Deserializer.swift in Sources */,
 				8C1596492092804E0063805F /* Serializer.swift in Sources */,
-				8C1596472092804E0063805F /* Extensions.swift in Sources */,
 				8C624FDD209CD96000DC4924 /* Constants.swift in Sources */,
 				8CCD1E3E20A61F3C0057A153 /* Models.swift in Sources */,
 			);
