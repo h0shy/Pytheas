@@ -8,7 +8,6 @@
 
 import Quick
 import Nimble
-//import MapKit
 @testable import Pytheas
 
 final class PytheasTests: QuickSpec {
