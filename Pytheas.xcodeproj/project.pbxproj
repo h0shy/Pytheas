@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		58CE9FB758029BFD1F91BDB3 /* Pods_Pytheas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48E51D5FDE76B579BD828B0 /* Pods_Pytheas.framework */; };
 		8C159634209280370063805F /* Pytheas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C15962A209280370063805F /* Pytheas.framework */; };
 		8C15963B209280370063805F /* Pytheas.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C15962D209280370063805F /* Pytheas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C1596482092804E0063805F /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596452092804E0063805F /* Deserializer.swift */; };
@@ -46,7 +45,6 @@
 		8CF6EC4920A1B42D003865CD /* PolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0420A1B1E7003865CD /* PolygonInGeometry.geojson */; };
 		8CF6EC4A20A1B42D003865CD /* PolygonWithHoles.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0720A1B1E7003865CD /* PolygonWithHoles.geojson */; };
 		8CF6EC4B20A1B42D003865CD /* PolygonWithHolesInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0F20A1B1E7003865CD /* PolygonWithHolesInGeometry.geojson */; };
-		99786A8BFE77D206B46E072C /* Pods_Pytheas_PytheasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AAFEE0319EE06289362264 /* Pods_Pytheas_PytheasTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +60,6 @@
 /* Begin PBXFileReference section */
 		14A9B2D9FEEB2B4A8F1AC2FA /* Pods-Pytheas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas/Pods-Pytheas.release.xcconfig"; sourceTree = "<group>"; };
 		165D95F6A470F89263F47540 /* Pods-Mozi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi/Pods-Mozi.debug.xcconfig"; sourceTree = "<group>"; };
-		33C84C85417B4C7CEBC5FF4D /* Pods_Mozi_MoziTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mozi_MoziTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		447CDB61A0E63111D134C0A1 /* Pods_Mozi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mozi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		780C4188977FB0B525DD6A41 /* Pods-Pytheas-PytheasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas-PytheasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas-PytheasTests/Pods-Pytheas-PytheasTests.release.xcconfig"; sourceTree = "<group>"; };
 		794823EEA0EBDB0732921833 /* Pods-Pytheas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas/Pods-Pytheas.debug.xcconfig"; sourceTree = "<group>"; };
 		8C15962A209280370063805F /* Pytheas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pytheas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,11 +88,9 @@
 		8CF6EC0E20A1B1E7003865CD /* MultiPoint.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MultiPoint.geojson; sourceTree = "<group>"; };
 		8CF6EC0F20A1B1E7003865CD /* PolygonWithHolesInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PolygonWithHolesInGeometry.geojson; sourceTree = "<group>"; };
 		9C976C897A4B0AED4FBE897D /* Pods-Mozi-MoziTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi-MoziTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi-MoziTests/Pods-Mozi-MoziTests.release.xcconfig"; sourceTree = "<group>"; };
-		A48E51D5FDE76B579BD828B0 /* Pods_Pytheas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pytheas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7D10ADA955CF9884C482D68 /* Pods-Pytheas-PytheasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas-PytheasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas-PytheasTests/Pods-Pytheas-PytheasTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1DE36D293044A6097C668A2 /* Pods-Mozi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi/Pods-Mozi.release.xcconfig"; sourceTree = "<group>"; };
 		D55BB5EAE18A5E17211A2083 /* Pods-Mozi-MoziTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi-MoziTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi-MoziTests/Pods-Mozi-MoziTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F5AAFEE0319EE06289362264 /* Pods_Pytheas_PytheasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pytheas_PytheasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58CE9FB758029BFD1F91BDB3 /* Pods_Pytheas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +106,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C159634209280370063805F /* Pytheas.framework in Frameworks */,
-				99786A8BFE77D206B46E072C /* Pods_Pytheas_PytheasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,10 +203,6 @@
 		D80ED1AAE734AC86D03529C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				447CDB61A0E63111D134C0A1 /* Pods_Mozi.framework */,
-				33C84C85417B4C7CEBC5FF4D /* Pods_Mozi_MoziTests.framework */,
-				A48E51D5FDE76B579BD828B0 /* Pods_Pytheas.framework */,
-				F5AAFEE0319EE06289362264 /* Pods_Pytheas_PytheasTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -576,16 +564,12 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 48468D4PTA;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.0.1;
+				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Pytheas/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.Pytheas;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -604,16 +588,12 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 48468D4PTA;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1.0.1;
+				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Pytheas/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.Pytheas;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
