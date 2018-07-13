@@ -35,7 +35,7 @@ public struct Line: Shape {
     public let title: String?
     public let subtitle: String?
     
-    var points: [Point] { return coordinates.map { Point(coordinate: $0) } }
+    public var points: [Point] { return coordinates.map { Point(coordinate: $0) } }
 }
 
 public struct Polygon: Shape {

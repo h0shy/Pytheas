@@ -38,7 +38,7 @@ public final class Pytheas {
         
         var shapes: [Any] = []
         for feature in features {
-            guard let shape =  shape(from: feature) else { continue }
+            guard let shape = shape(from: feature) else { continue }
             if let subShapes = shape as? [Any] {
                 shapes.append(contentsOf: subShapes)
             } else {
