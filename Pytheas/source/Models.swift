@@ -15,11 +15,11 @@ public protocol Shape {
     var subtitle: String? { get }
 }
 
-struct Point: Shape {
+public struct Point: Shape {
     
-    let coordinate: CLLocationCoordinate2D
-    let title: String?
-    let subtitle: String?
+    public let coordinate: CLLocationCoordinate2D
+    public let title: String?
+    public let subtitle: String?
     
     init(coordinate: CLLocationCoordinate2D, title: String? = nil, subtitle: String? = nil) {
         
@@ -29,36 +29,21 @@ struct Point: Shape {
     }
 }
 
-struct Line: Shape {
+public struct Line: Shape {
     
-    let coordinates: [CLLocationCoordinate2D]
-    let title: String?
-    let subtitle: String?
-    
-//    init(coordinates: [CLLocationCoordinate2D], title: String? = nil, subtitle: String? = nil) {
-//
-//        self.coordinates = coordinates
-//        self.title = title
-//        self.subtitle = subtitle
-//    }
+    public let coordinates: [CLLocationCoordinate2D]
+    public let title: String?
+    public let subtitle: String?
     
     var points: [Point] { return coordinates.map { Point(coordinate: $0) } }
 }
 
-struct Polygon: Shape {
+public struct Polygon: Shape {
     
-    let coordinates: [CLLocationCoordinate2D]
-    let interiorPolygons: [Polygon]
-    let title: String?
-    let subtitle: String?
+    public let coordinates: [CLLocationCoordinate2D]
+    public let interiorPolygons: [Polygon]
+    public let title: String?
+    public let subtitle: String?
     
-//    init(coordinates: [CLLocationCoordinate2D], interiorPolygons: [Polygon], title: String? = nil, subtitle: String? = nil) {
-//
-//        self.coordinates = coordinates
-//        self.interiorPolygons = interiorPolygons
-//        self.title = title
-//        self.subtitle = subtitle
-//    }
-    
-    var points: [Point] { return coordinates.map { Point(coordinate: $0) } }
+    public var points: [Point] { return coordinates.map { Point(coordinate: $0) } }
 }
