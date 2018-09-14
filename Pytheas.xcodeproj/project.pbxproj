@@ -45,6 +45,8 @@
 		8CF6EC4920A1B42D003865CD /* PolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0420A1B1E7003865CD /* PolygonInGeometry.geojson */; };
 		8CF6EC4A20A1B42D003865CD /* PolygonWithHoles.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0720A1B1E7003865CD /* PolygonWithHoles.geojson */; };
 		8CF6EC4B20A1B42D003865CD /* PolygonWithHolesInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0F20A1B1E7003865CD /* PolygonWithHolesInGeometry.geojson */; };
+		9F7C11F7AEEC1BFCE37367DC /* Pods_Pytheas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E08A2229D25E3B5AE5A21 /* Pods_Pytheas.framework */; };
+		AE460AFA9F4E285439670F85 /* Pods_Pytheas_PytheasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 877F61D4B43D7BBAE678A915 /* Pods_Pytheas_PytheasTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,7 @@
 		165D95F6A470F89263F47540 /* Pods-Mozi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi/Pods-Mozi.debug.xcconfig"; sourceTree = "<group>"; };
 		780C4188977FB0B525DD6A41 /* Pods-Pytheas-PytheasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas-PytheasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas-PytheasTests/Pods-Pytheas-PytheasTests.release.xcconfig"; sourceTree = "<group>"; };
 		794823EEA0EBDB0732921833 /* Pods-Pytheas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas/Pods-Pytheas.debug.xcconfig"; sourceTree = "<group>"; };
+		877F61D4B43D7BBAE678A915 /* Pods_Pytheas_PytheasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pytheas_PytheasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C15962A209280370063805F /* Pytheas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pytheas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C15962D209280370063805F /* Pytheas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pytheas.h; sourceTree = "<group>"; };
 		8C15962E209280370063805F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 		B7D10ADA955CF9884C482D68 /* Pods-Pytheas-PytheasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas-PytheasTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas-PytheasTests/Pods-Pytheas-PytheasTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1DE36D293044A6097C668A2 /* Pods-Mozi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi/Pods-Mozi.release.xcconfig"; sourceTree = "<group>"; };
 		D55BB5EAE18A5E17211A2083 /* Pods-Mozi-MoziTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mozi-MoziTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mozi-MoziTests/Pods-Mozi-MoziTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F26E08A2229D25E3B5AE5A21 /* Pods_Pytheas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pytheas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F7C11F7AEEC1BFCE37367DC /* Pods_Pytheas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C159634209280370063805F /* Pytheas.framework in Frameworks */,
+				AE460AFA9F4E285439670F85 /* Pods_Pytheas_PytheasTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +209,8 @@
 		D80ED1AAE734AC86D03529C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F26E08A2229D25E3B5AE5A21 /* Pods_Pytheas.framework */,
+				877F61D4B43D7BBAE678A915 /* Pods_Pytheas_PytheasTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,14 +275,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Stefan Hoschkara";
 				TargetAttributes = {
 					8C159629209280370063805F = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 					8C159632209280370063805F = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -559,7 +569,7 @@
 			baseConfigurationReference = 794823EEA0EBDB0732921833 /* Pods-Pytheas.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 48468D4PTA;
@@ -576,7 +586,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.Pytheas;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -603,7 +613,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.Pytheas;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -623,7 +633,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.PytheasTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -643,7 +653,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoschkara.PytheasTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
