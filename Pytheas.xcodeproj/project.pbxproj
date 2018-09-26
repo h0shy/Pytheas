@@ -13,7 +13,6 @@
 		8C1596492092804E0063805F /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596462092804E0063805F /* Serializer.swift */; };
 		8C4AA1AA20A20D75009C20EC /* PytheasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4AA1A920A20D74009C20EC /* PytheasTests.swift */; };
 		8C624FDD209CD96000DC4924 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C624FDC209CD96000DC4924 /* Constants.swift */; };
-		8C624FDE209CD96000DC4924 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C624FDC209CD96000DC4924 /* Constants.swift */; };
 		8CCD1E3E20A61F3C0057A153 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4AA1AB20A2DBEC009C20EC /* Models.swift */; };
 		8CF6EC2E20A1B42D003865CD /* FeatureCollection.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0320A1B1E7003865CD /* FeatureCollection.geojson */; };
 		8CF6EC2F20A1B42D003865CD /* LineString.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8CF6EC0A20A1B1E7003865CD /* LineString.geojson */; };
@@ -429,7 +428,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C4AA1AA20A20D75009C20EC /* PytheasTests.swift in Sources */,
-				8C624FDE209CD96000DC4924 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
