@@ -23,18 +23,23 @@ final class PytheasTests: QuickSpec {
             let bundle = Bundle(for: type(of: self))
             let path = bundle.path(forResource: name, ofType: "geojson")!
             let url = URL(fileURLWithPath: path)
-            let jsonData = try! Data.init(contentsOf: url, options: .mappedIfSafe)
-
-            do {
-                guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] else {
-                    fail("Could not find fixture \(name)")
-                    return [:]
-                }
-                return json
-            } catch {
-                print("Error \(error) while deserializing \(name).")
-            }
             
+            do {
+                let jsonData = try Data.init(contentsOf: url, options: .mappedIfSafe)
+                
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] else {
+                        fail("Could not find fixture \(name)")
+                        return [:]
+                    }
+                    return json
+                } catch {
+                    print("Error \(error) while deserializing \(name).")
+                }
+            } catch {
+                print("Could not find jsoData for url: \(url)")
+            }
+
             return [:]
         }
         
