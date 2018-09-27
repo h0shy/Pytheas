@@ -20,10 +20,8 @@ final class PytheasTests: QuickSpec {
         
         func jsonFromFixture(_ name: String) -> [String:Any] {
             
-            guard let path = Bundle(identifier: "com.hoschkara.Pytheas")?.path(forResource: name, ofType: "geojson") else {
-                fail("Could not find fixture \(name)")
-                return [:]
-            }
+            let bundle = Bundle(for: type(of: self))
+            let path = bundle.path(forResource: name, ofType: "geojson")!
             let url = URL(fileURLWithPath: path)
             let jsonData = try! Data.init(contentsOf: url, options: .mappedIfSafe)
 
