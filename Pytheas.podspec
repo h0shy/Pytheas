@@ -143,6 +143,7 @@ Pod::Spec.new do |s|
 
     s.test_spec 'PytheasTests' do |test_spec|
     test_spec.source_files = 'PytheasTests/*.{swift}'
+    test_spec.resources = "PytheasTests/fixtures/*.geojson"
     test_spec.dependency 'Quick'
     test_spec.dependency 'Nimble'
   end 
