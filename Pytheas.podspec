@@ -139,7 +139,7 @@ Pod::Spec.new do |s|
 
     s.test_spec 'PytheasTests' do |t|
     t.source_files = 'PytheasTests/*.swift'
-    t.resources = "PytheasTests/fixtures/*"
+    t.resources = 'PytheasTests/fixtures/*'
     t.dependency 'Quick'
     t.dependency 'Nimble'
   end 
