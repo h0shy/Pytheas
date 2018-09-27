@@ -110,8 +110,10 @@ Pod::Spec.new do |s|
   #
 
   # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
-
+  s.resources = "PytheasTests/fixtures/*.geojson"
+  s.resource_bundles = {
+    'Fixtures' => ['PytheasTests/fixtures/*.geojson'],
+  }
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 
@@ -139,9 +141,7 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
 
-  spec.resource_bundles = {
-    'Fixtures' => ['PytheasTests/fixtures/*.geojson'],
-  }
+
 
     s.test_spec 'PytheasTests' do |test_spec|
     test_spec.source_files = 'PytheasTests/*.{swift}'
