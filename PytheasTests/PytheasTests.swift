@@ -20,19 +20,22 @@ final class PytheasTests: QuickSpec {
         
         func jsonFromFixture(_ name: String) -> [String:Any] {
             
-            let url: URL
+//            let url: URL
+//
+//            if let testBundle = Bundle(identifier: "PytheasTestsResources") {
+//                let testPath = testBundle.path(forResource: name, ofType: "geojson")!
+//                url = URL(fileURLWithPath: testPath)
+//            } else {
+//                fail("Could not load bundle PytheasTestsResources")
+//
+//                let defaultBundle = Bundle(for: type(of: self))
+//                let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
+//                url = URL(fileURLWithPath: defaultPath)
+//            }
 
-            if let testBundle = Bundle(identifier: "PytheasTestsResources") {
-                let testPath = testBundle.path(forResource: name, ofType: "geojson")!
-                url = URL(fileURLWithPath: testPath)
-            } else {
-                fail("Could not load bundle PytheasTestsResources")
-
-                let defaultBundle = Bundle(for: type(of: self))
-                let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
-                url = URL(fileURLWithPath: defaultPath)
-            }
-
+            let defaultBundle = Bundle(for: type(of: self))
+            let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
+            let url = URL(fileURLWithPath: defaultPath)
             let jsonData = try! Data.init(contentsOf: url, options: .mappedIfSafe)
 
             do {
