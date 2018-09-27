@@ -20,26 +20,28 @@ final class PytheasTests: QuickSpec {
         
         func jsonFromFixture(_ name: String) -> [String:Any] {
             
-            let bundle = Bundle(for: type(of: self))
-            let path = bundle.path(forResource: name, ofType: "geojson")!
-            let url = URL(fileURLWithPath: path)
-            
-            do {
-                let jsonData = try Data.init(contentsOf: url, options: .mappedIfSafe)
-                
-                do {
-                    guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] else {
-                        fail("Could not find fixture \(name)")
-                        return [:]
-                    }
-                    return json
-                } catch {
-                    print("Error \(error) while deserializing \(name).")
-                }
-            } catch {
-                print("Could not find jsoData for url: \(url)")
+            let url: URL
+
+            if let testBundle = Bundle(identifier: "PytheasTestsResources") {
+                let testPath = testBundle.path(forResource: name, ofType: "geojson")!
+                url = URL(fileURLWithPath: testPath)
+            } else {
+                let defaultBundle = Bundle(for: type(of: self))
+                let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
+                url = URL(fileURLWithPath: defaultPath)
             }
 
+            let jsonData = try! Data.init(contentsOf: url, options: .mappedIfSafe)
+
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] else  {
+                    fail("Could not find fixture \(name)")
+                    return [:]
+                }
+                return json
+            } catch {
+                print("Error \(error) while deserializing \(name).")
+            }
             return [:]
         }
         
