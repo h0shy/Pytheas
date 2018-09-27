@@ -19,20 +19,6 @@ final class PytheasTests: QuickSpec {
         let outerPolygonIndex = 0
         
         func jsonFromFixture(_ name: String) -> [String:Any] {
-            
-//            let url: URL
-//
-//            if let testBundle = Bundle(identifier: "PytheasTestsResources") {
-//                let testPath = testBundle.path(forResource: name, ofType: "geojson")!
-//                url = URL(fileURLWithPath: testPath)
-//            } else {
-//                fail("Could not load bundle PytheasTestsResources")
-//
-//                let defaultBundle = Bundle(for: type(of: self))
-//                let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
-//                url = URL(fileURLWithPath: defaultPath)
-//            }
-
             let defaultBundle = Bundle(for: type(of: self))
             let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
             let url = URL(fileURLWithPath: defaultPath)
