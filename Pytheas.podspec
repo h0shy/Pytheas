@@ -95,7 +95,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files = "Pytheas/**/*.{swift}"
+  s.source_files = "Pytheas/**/*.swift"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -139,7 +139,7 @@ Pod::Spec.new do |s|
 
     s.test_spec 'PytheasTests' do |t|
     t.source_files = 'PytheasTests/*.swift'
-    t.resources = 'PytheasTests/fixtures/*'
+    t.resources = 'PytheasTests/**/*.geojson'
     t.dependency 'Quick'
     t.dependency 'Nimble'
   end 
