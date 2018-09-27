@@ -139,4 +139,10 @@ Pod::Spec.new do |s|
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
 
+    s.test_spec 'PytheasTests' do |test_spec|
+    test_spec.source_files = 'PytheasTests/*.{swift,geojson}'
+    test_spec.dependency 'Quick'
+    test_spec.dependency 'Nimble'
+  end 
+
 end
