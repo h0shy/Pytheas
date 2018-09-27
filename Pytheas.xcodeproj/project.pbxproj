@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C0B85E4215CD02900E72719 /* PolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85D5215CD02900E72719 /* PolygonInGeometry.geojson */; };
+		8C0B85E5215CD02900E72719 /* MultiLineStringInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85D6215CD02900E72719 /* MultiLineStringInGeometry.geojson */; };
+		8C0B85E6215CD02900E72719 /* Polygon.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85D7215CD02900E72719 /* Polygon.geojson */; };
+		8C0B85E7215CD02900E72719 /* MultiPointInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85D8215CD02900E72719 /* MultiPointInGeometry.geojson */; };
+		8C0B85E8215CD02900E72719 /* PolygonWithHoles.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85D9215CD02900E72719 /* PolygonWithHoles.geojson */; };
+		8C0B85E9215CD02900E72719 /* MultiPoint.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85DA215CD02900E72719 /* MultiPoint.geojson */; };
+		8C0B85EA215CD02900E72719 /* PointInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85DB215CD02900E72719 /* PointInGeometry.geojson */; };
+		8C0B85EB215CD02900E72719 /* MultiPolygonInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85DC215CD02900E72719 /* MultiPolygonInGeometry.geojson */; };
+		8C0B85EC215CD02900E72719 /* MultiLineString.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85DD215CD02900E72719 /* MultiLineString.geojson */; };
+		8C0B85ED215CD02900E72719 /* Point.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85DE215CD02900E72719 /* Point.geojson */; };
+		8C0B85EE215CD02900E72719 /* LineStringInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85DF215CD02900E72719 /* LineStringInGeometry.geojson */; };
+		8C0B85EF215CD02900E72719 /* FeatureCollection.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85E0215CD02900E72719 /* FeatureCollection.geojson */; };
+		8C0B85F0215CD02900E72719 /* MultiPolygon.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85E1215CD02900E72719 /* MultiPolygon.geojson */; };
+		8C0B85F1215CD02900E72719 /* PolygonWithHolesInGeometry.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85E2215CD02900E72719 /* PolygonWithHolesInGeometry.geojson */; };
+		8C0B85F2215CD02900E72719 /* LineString.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 8C0B85E3215CD02900E72719 /* LineString.geojson */; };
 		8C159634209280370063805F /* Pytheas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C15962A209280370063805F /* Pytheas.framework */; };
 		8C15963B209280370063805F /* Pytheas.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C15962D209280370063805F /* Pytheas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C1596482092804E0063805F /* Deserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1596452092804E0063805F /* Deserializer.swift */; };
@@ -64,6 +79,21 @@
 		780C4188977FB0B525DD6A41 /* Pods-Pytheas-PytheasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas-PytheasTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas-PytheasTests/Pods-Pytheas-PytheasTests.release.xcconfig"; sourceTree = "<group>"; };
 		794823EEA0EBDB0732921833 /* Pods-Pytheas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pytheas.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pytheas/Pods-Pytheas.debug.xcconfig"; sourceTree = "<group>"; };
 		877F61D4B43D7BBAE678A915 /* Pods_Pytheas_PytheasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pytheas_PytheasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C0B85D5215CD02900E72719 /* PolygonInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PolygonInGeometry.geojson; path = PytheasTests/fixtures/PolygonInGeometry.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85D6215CD02900E72719 /* MultiLineStringInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiLineStringInGeometry.geojson; path = PytheasTests/fixtures/MultiLineStringInGeometry.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85D7215CD02900E72719 /* Polygon.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Polygon.geojson; path = PytheasTests/fixtures/Polygon.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85D8215CD02900E72719 /* MultiPointInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiPointInGeometry.geojson; path = PytheasTests/fixtures/MultiPointInGeometry.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85D9215CD02900E72719 /* PolygonWithHoles.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PolygonWithHoles.geojson; path = PytheasTests/fixtures/PolygonWithHoles.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85DA215CD02900E72719 /* MultiPoint.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiPoint.geojson; path = PytheasTests/fixtures/MultiPoint.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85DB215CD02900E72719 /* PointInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PointInGeometry.geojson; path = PytheasTests/fixtures/PointInGeometry.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85DC215CD02900E72719 /* MultiPolygonInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiPolygonInGeometry.geojson; path = PytheasTests/fixtures/MultiPolygonInGeometry.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85DD215CD02900E72719 /* MultiLineString.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiLineString.geojson; path = PytheasTests/fixtures/MultiLineString.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85DE215CD02900E72719 /* Point.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Point.geojson; path = PytheasTests/fixtures/Point.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85DF215CD02900E72719 /* LineStringInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LineStringInGeometry.geojson; path = PytheasTests/fixtures/LineStringInGeometry.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85E0215CD02900E72719 /* FeatureCollection.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = FeatureCollection.geojson; path = PytheasTests/fixtures/FeatureCollection.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85E1215CD02900E72719 /* MultiPolygon.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MultiPolygon.geojson; path = PytheasTests/fixtures/MultiPolygon.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85E2215CD02900E72719 /* PolygonWithHolesInGeometry.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PolygonWithHolesInGeometry.geojson; path = PytheasTests/fixtures/PolygonWithHolesInGeometry.geojson; sourceTree = SOURCE_ROOT; };
+		8C0B85E3215CD02900E72719 /* LineString.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LineString.geojson; path = PytheasTests/fixtures/LineString.geojson; sourceTree = SOURCE_ROOT; };
 		8C15962A209280370063805F /* Pytheas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pytheas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C15962D209280370063805F /* Pytheas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pytheas.h; sourceTree = "<group>"; };
 		8C15962E209280370063805F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,6 +162,28 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8C0B85D4215CD01D00E72719 /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				8C0B85E0215CD02900E72719 /* FeatureCollection.geojson */,
+				8C0B85E3215CD02900E72719 /* LineString.geojson */,
+				8C0B85DF215CD02900E72719 /* LineStringInGeometry.geojson */,
+				8C0B85DD215CD02900E72719 /* MultiLineString.geojson */,
+				8C0B85D6215CD02900E72719 /* MultiLineStringInGeometry.geojson */,
+				8C0B85DA215CD02900E72719 /* MultiPoint.geojson */,
+				8C0B85D8215CD02900E72719 /* MultiPointInGeometry.geojson */,
+				8C0B85E1215CD02900E72719 /* MultiPolygon.geojson */,
+				8C0B85DC215CD02900E72719 /* MultiPolygonInGeometry.geojson */,
+				8C0B85DE215CD02900E72719 /* Point.geojson */,
+				8C0B85DB215CD02900E72719 /* PointInGeometry.geojson */,
+				8C0B85D7215CD02900E72719 /* Polygon.geojson */,
+				8C0B85D5215CD02900E72719 /* PolygonInGeometry.geojson */,
+				8C0B85D9215CD02900E72719 /* PolygonWithHoles.geojson */,
+				8C0B85E2215CD02900E72719 /* PolygonWithHolesInGeometry.geojson */,
+			);
+			path = fixtures;
+			sourceTree = "<group>";
+		};
 		8C159620209280370063805F = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +249,7 @@
 		8CF6EC4C20A1B76D003865CD /* source */ = {
 			isa = PBXGroup;
 			children = (
+				8C0B85D4215CD01D00E72719 /* fixtures */,
 				8C624FDC209CD96000DC4924 /* Constants.swift */,
 				8C1596452092804E0063805F /* Deserializer.swift */,
 				8C1596462092804E0063805F /* Serializer.swift */,
@@ -310,21 +363,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C0B85ED215CD02900E72719 /* Point.geojson in Resources */,
 				8CF6EC4620A1B42D003865CD /* Point.geojson in Resources */,
 				8CF6EC4120A1B42D003865CD /* MultiLineStringInGeometry.geojson in Resources */,
+				8C0B85EE215CD02900E72719 /* LineStringInGeometry.geojson in Resources */,
+				8C0B85E8215CD02900E72719 /* PolygonWithHoles.geojson in Resources */,
+				8C0B85E6215CD02900E72719 /* Polygon.geojson in Resources */,
+				8C0B85EC215CD02900E72719 /* MultiLineString.geojson in Resources */,
 				8CF6EC4820A1B42D003865CD /* Polygon.geojson in Resources */,
+				8C0B85EF215CD02900E72719 /* FeatureCollection.geojson in Resources */,
 				8CF6EC4320A1B42D003865CD /* MultiPointInGeometry.geojson in Resources */,
 				8CF6EC4420A1B42D003865CD /* MultiPolygon.geojson in Resources */,
 				8CF6EC4020A1B42D003865CD /* MultiLineString.geojson in Resources */,
+				8C0B85F2215CD02900E72719 /* LineString.geojson in Resources */,
+				8C0B85E9215CD02900E72719 /* MultiPoint.geojson in Resources */,
 				8CF6EC4A20A1B42D003865CD /* PolygonWithHoles.geojson in Resources */,
+				8C0B85EB215CD02900E72719 /* MultiPolygonInGeometry.geojson in Resources */,
+				8C0B85F1215CD02900E72719 /* PolygonWithHolesInGeometry.geojson in Resources */,
+				8C0B85E4215CD02900E72719 /* PolygonInGeometry.geojson in Resources */,
 				8CF6EC4520A1B42D003865CD /* MultiPolygonInGeometry.geojson in Resources */,
 				8CF6EC4920A1B42D003865CD /* PolygonInGeometry.geojson in Resources */,
+				8C0B85E7215CD02900E72719 /* MultiPointInGeometry.geojson in Resources */,
 				8CF6EC4720A1B42D003865CD /* PointInGeometry.geojson in Resources */,
 				8CF6EC4220A1B42D003865CD /* MultiPoint.geojson in Resources */,
 				8CF6EC4B20A1B42D003865CD /* PolygonWithHolesInGeometry.geojson in Resources */,
+				8C0B85EA215CD02900E72719 /* PointInGeometry.geojson in Resources */,
 				8CF6EC3E20A1B42D003865CD /* LineString.geojson in Resources */,
 				8CF6EC3F20A1B42D003865CD /* LineStringInGeometry.geojson in Resources */,
 				8CF6EC3D20A1B42D003865CD /* FeatureCollection.geojson in Resources */,
+				8C0B85F0215CD02900E72719 /* MultiPolygon.geojson in Resources */,
+				8C0B85E5215CD02900E72719 /* MultiLineStringInGeometry.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

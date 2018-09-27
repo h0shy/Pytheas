@@ -145,7 +145,6 @@ Pod::Spec.new do |s|
     test_spec.source_files = 'PytheasTests/*.{swift}'
     test_spec.dependency 'Quick'
     test_spec.dependency 'Nimble'
-    test_spec.dependency 'PytheasFixtures'
   end 
 
 end
