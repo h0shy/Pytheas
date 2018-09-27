@@ -37,7 +37,7 @@ final class PytheasTests: QuickSpec {
 
             do {
                 guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] else  {
-                    fail("Could not find fixture \(name)")
+                    fail("Could not find fixture \(name) in \(jsonData) with url: \(url)")
                     return [:]
                 }
                 return json
