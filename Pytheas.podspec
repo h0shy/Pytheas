@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Pytheas"
-  s.version      = "1.2.0"
+  s.version      = "1.2.1"
   s.summary      = "GeoJSON Serializer and Deserializer for MapKit and GoogleMaps"
   s.swift_version = '4.2'
   
@@ -139,7 +139,7 @@ Pod::Spec.new do |s|
 
     s.test_spec 'PytheasTests' do |t|
     t.source_files = 'PytheasTests/*.swift'
-    # t.resource_bundles = {'PytheasTestsResources' => ['PytheasTests/fixtures/*.geojson']}
+    t.requires_app_host = true
     t.resources = 'PytheasTests/fixtures/*'
     t.dependency 'Quick'
     t.dependency 'Nimble'
