@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Pytheas"
-  s.version      = "1.2.2"
+  s.version      = "1.2.3"
   s.summary      = "GeoJSON Serializer and Deserializer for MapKit and GoogleMaps"
   s.swift_version = '5.0'
   
