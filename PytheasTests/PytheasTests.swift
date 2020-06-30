@@ -10,14 +10,14 @@ final class PytheasTests: QuickSpec {
         let latitudeIndex = 1
         let outerPolygonIndex = 0
         
-        func jsonFromFixture(_ name: String) -> [String:Any] {
+        func jsonFromFixture(_ name: String) -> [String: Any] {
             let defaultBundle = Bundle(for: type(of: self))
             let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
             let url = URL(fileURLWithPath: defaultPath)
             let jsonData = try! Data.init(contentsOf: url, options: .mappedIfSafe)
 
             do {
-                guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String:Any] else  {
+                guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else  {
                     fail("Could not find fixture \(name) in \(jsonData) with url: \(url)")
                     return [:]
                 }
@@ -28,9 +28,9 @@ final class PytheasTests: QuickSpec {
             return [:]
         }
         
-        func properties(from shape: Shape) -> [String:Any] {
+        func properties(from shape: Shape) -> [String: Any] {
             
-            var properties: [String:Any] = [:]
+            var properties: [String: Any] = [:]
             properties[Key.title] = shape.title
             properties[Key.subtitle] = shape.subtitle
             
@@ -64,16 +64,16 @@ final class PytheasTests: QuickSpec {
                         return
                     }
                     
-                    expect(point.title) == (serialized[Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(point.subtitle) == (serialized[Key.properties] as? [String:Any])?[Key.subtitle] as? String
+                    expect(point.title) == (serialized[Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(point.subtitle) == (serialized[Key.properties] as? [String: Any])?[Key.subtitle] as? String
                     
-                    expect(point.coordinate.latitude) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
-                    expect(point.coordinate.longitude) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
-                    expect(point.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(point.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
+                    expect(point.coordinate.latitude) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
+                    expect(point.coordinate.longitude) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
+                    expect(point.title) == (json[Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(point.subtitle) == (json[Key.properties] as? [String: Any])?[Key.subtitle] as? String
 
-                    expect(point.coordinate.latitude) == ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
-                    expect(point.coordinate.longitude) == ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
+                    expect(point.coordinate.latitude) == ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
+                    expect(point.coordinate.longitude) == ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
                 }
             }
             
@@ -106,17 +106,17 @@ final class PytheasTests: QuickSpec {
                         return
                     }
                     
-                    expect(line.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(line.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
+                    expect(line.title) == (json[Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(line.subtitle) == (json[Key.properties] as? [String: Any])?[Key.subtitle] as? String
                     
-                    expect(line.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?.count
+                    expect(line.points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?.count
                     for (pointIndex, point) in line.points.enumerated() {
                         
-                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         
-                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
                 }
             }
@@ -151,16 +151,16 @@ final class PytheasTests: QuickSpec {
                         return
                     }
                     
-                    expect(polygon.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(polygon.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
+                    expect(polygon.title) == (json[Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(polygon.subtitle) == (json[Key.properties] as? [String: Any])?[Key.subtitle] as? String
                     
-                    expect(polygon.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
+                    expect(polygon.points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
                     for (pointIndex, point) in polygon.points.enumerated() {
-                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         
-                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
                 }
             }
@@ -204,27 +204,27 @@ final class PytheasTests: QuickSpec {
                         return
                     }
                     
-                    expect(polygon.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(polygon.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
+                    expect(polygon.title) == (json[Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(polygon.subtitle) == (json[Key.properties] as? [String: Any])?[Key.subtitle] as? String
                     
-                    expect(polygon.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
+                    expect(polygon.points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex].count
                     for (pointIndex, point) in polygon.points.enumerated() {
-                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         
-                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((serialized[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
                     
-                    expect(polygon.interiorPolygons.count+1) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?.count
+                    expect(polygon.interiorPolygons.count+1) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?.count
                     for (interiorIndex, interior) in polygon.interiorPolygons.enumerated() {
-                        expect(interior.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex].count
+                        expect(interior.points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex].count
                         for (pointIndex, point) in interior.points.enumerated() {
-                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                             
-                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
                     }
                 }
@@ -255,14 +255,14 @@ final class PytheasTests: QuickSpec {
                         return
                     }
                     
-                    expect(points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?.count
+                    expect(points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?.count
                     for (pointIndex, point) in points.enumerated() {
                         
-                        expect(point.title) == (json[Key.properties] as? [String:Any])?[Key.title] as? String
-                        expect(point.subtitle) == (json[Key.properties] as? [String:Any])?[Key.subtitle] as? String
+                        expect(point.title) == (json[Key.properties] as? [String: Any])?[Key.title] as? String
+                        expect(point.subtitle) == (json[Key.properties] as? [String: Any])?[Key.subtitle] as? String
                         
-                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                        expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                     }
                 }
             }
@@ -295,12 +295,12 @@ final class PytheasTests: QuickSpec {
                         return
                     }
 
-                    expect(lines.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?.count
+                    expect(lines.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?.count
                     for (lineIndex, line) in lines.enumerated() {
-                        expect(line.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex].count
+                        expect(line.points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex].count
                         for (pointIndex, point) in line.points.enumerated() {
-                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[Double]]])?[lineIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
                     }
                 }
@@ -343,20 +343,20 @@ final class PytheasTests: QuickSpec {
                         return
                     }
 
-                    expect(polygons.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?.count
+                    expect(polygons.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?.count
                     for (polygonIndex, polygon) in polygons.enumerated() {
-                        expect(polygon.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex].count
+                        expect(polygon.points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex].count
                         for (pointIndex, point) in polygon.points.enumerated() {
-                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                            expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][outerPolygonIndex][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                         }
 
-                        expect(polygon.interiorPolygons.count+1) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex].count
+                        expect(polygon.interiorPolygons.count+1) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex].count
                         for (interiorIndex, interior) in polygon.interiorPolygons.enumerated() {
-                            expect(interior.points.count) == ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1].count
+                            expect(interior.points.count) == ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1].count
                             for (pointIndex, point) in interior.points.enumerated() {
-                                expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
-                                expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String:Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
+                                expect(String(format: "%.0f", point.coordinate.latitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][latitudeIndex].rounded(.toNearestOrEven) ?? "")
+                                expect(String(format: "%.0f", point.coordinate.longitude)) == String(format: "%.0f", ((json[Key.geometry] as? [String: Any])?[Key.coordinates] as? [[[[Double]]]])?[polygonIndex][interiorIndex+1][pointIndex][longitudeIndex].rounded(.toNearestOrEven) ?? "")
                             }
                         }
                     }
@@ -379,25 +379,25 @@ final class PytheasTests: QuickSpec {
                     }
                     
                     let first = features.first as? Point
-                    expect(first?.title) == ((json[Key.features] as? [[String:Any]])?[0][Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(first?.subtitle) == ((json[Key.features] as? [[String:Any]])?[0][Key.properties] as? [String:Any])?[Key.subtitle] as? String
-                    expect(first?.coordinate.latitude) == (((json[Key.features] as? [[String:Any]])?[0][Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
-                    expect(first?.coordinate.longitude) == (((json[Key.features] as? [[String:Any]])?[0][Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
+                    expect(first?.title) == ((json[Key.features] as? [[String: Any]])?[0][Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(first?.subtitle) == ((json[Key.features] as? [[String: Any]])?[0][Key.properties] as? [String: Any])?[Key.subtitle] as? String
+                    expect(first?.coordinate.latitude) == (((json[Key.features] as? [[String: Any]])?[0][Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
+                    expect(first?.coordinate.longitude) == (((json[Key.features] as? [[String: Any]])?[0][Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
                     
-                    expect(first?.title) == ((serialized[Key.features] as? [[String:Any]])?[0][Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(first?.subtitle) == ((serialized[Key.features] as? [[String:Any]])?[0][Key.properties] as? [String:Any])?[Key.subtitle] as? String
-                    expect(first?.coordinate.latitude) == (((serialized[Key.features] as? [[String:Any]])?[0][Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
-                    expect(first?.coordinate.longitude) == (((serialized[Key.features] as? [[String:Any]])?[0][Key.geometry] as? [String:Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
+                    expect(first?.title) == ((serialized[Key.features] as? [[String: Any]])?[0][Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(first?.subtitle) == ((serialized[Key.features] as? [[String: Any]])?[0][Key.properties] as? [String: Any])?[Key.subtitle] as? String
+                    expect(first?.coordinate.latitude) == (((serialized[Key.features] as? [[String: Any]])?[0][Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[latitudeIndex]
+                    expect(first?.coordinate.longitude) == (((serialized[Key.features] as? [[String: Any]])?[0][Key.geometry] as? [String: Any])?[Key.coordinates] as? [Double])?[longitudeIndex]
                     
                     let second = features[1] as? Point
-                    expect(second?.title) == ((json[Key.features] as? [[String:Any]])?[1][Key.properties] as? [String:Any])?[Key.title] as? String
-                    expect(second?.subtitle) == ((json[Key.features] as? [[String:Any]])?[1][Key.properties] as? [String:Any])?[Key.subtitle] as? String
-                    expect(second?.coordinate.latitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[0][latitudeIndex]
-                    expect(second?.coordinate.longitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[0][longitudeIndex]
+                    expect(second?.title) == ((json[Key.features] as? [[String: Any]])?[1][Key.properties] as? [String: Any])?[Key.title] as? String
+                    expect(second?.subtitle) == ((json[Key.features] as? [[String: Any]])?[1][Key.properties] as? [String: Any])?[Key.subtitle] as? String
+                    expect(second?.coordinate.latitude) == (((json[Key.features] as? [[String: Any]])?[1][Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[0][latitudeIndex]
+                    expect(second?.coordinate.longitude) == (((json[Key.features] as? [[String: Any]])?[1][Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[0][longitudeIndex]
                     
                     let third = features[2] as? Point
-                    expect(third?.coordinate.latitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[1][latitudeIndex]
-                    expect(third?.coordinate.longitude) == (((json[Key.features] as? [[String:Any]])?[1][Key.geometry] as? [String:Any])?[Key.coordinates] as? [[Double]])?[1][longitudeIndex]
+                    expect(third?.coordinate.latitude) == (((json[Key.features] as? [[String: Any]])?[1][Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[1][latitudeIndex]
+                    expect(third?.coordinate.longitude) == (((json[Key.features] as? [[String: Any]])?[1][Key.geometry] as? [String: Any])?[Key.coordinates] as? [[Double]])?[1][longitudeIndex]
                 }
             }
         }
