@@ -44,7 +44,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.Point)
-                    guard let point = Pytheas.shape(from: json) as? Point else {
+                    guard let point = try? Pytheas.shape(from: json) as? Point else {
                         fail("Could not deserialize point.")
                         return
                     }
@@ -55,11 +55,11 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PointInGeometry)
-                    guard let point = Pytheas.shape(from: json) as? Point else {
+                    guard let point = try? Pytheas.shape(from: json) as? Point else {
                         fail("Could not deserialize point.")
                         return
                     }
-                    guard let serialized = Pytheas.geoJson(from: point, properties: properties(from: point)) else {
+                    guard let serialized = try? Pytheas.geoJson(from: point, properties: properties(from: point)) else {
                         fail("Could not serialize point.")
                         return
                     }
@@ -82,7 +82,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture(Fixture.LineString)
-                    guard let line = Pytheas.shape(from: json) as? Line else {
+                    guard let line = try? Pytheas.shape(from: json) as? Line else {
                         fail("Could not deserialize line.")
                         return
                     }
@@ -97,11 +97,11 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.LineStringInGeometry)
-                    guard let line = Pytheas.shape(from: json) as? Line else {
+                    guard let line = try? Pytheas.shape(from: json) as? Line else {
                         fail("Could not deserialize line.")
                         return
                     }
-                    guard let serialized = Pytheas.geoJson(from: line, properties: properties(from: line)) else {
+                    guard let serialized = try? Pytheas.geoJson(from: line, properties: properties(from: line)) else {
                         fail("Could not serialize line.")
                         return
                     }
@@ -126,7 +126,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.Polygon)
-                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
+                    guard let polygon = try? Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
@@ -141,12 +141,12 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PolygonInGeometry)
-                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
+                    guard let polygon = try? Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
                     
-                    guard let serialized = Pytheas.geoJson(from: polygon, properties: properties(from: polygon)) else {
+                    guard let serialized = try? Pytheas.geoJson(from: polygon, properties: properties(from: polygon)) else {
                         fail("Could not serialize polygon.")
                         return
                     }
@@ -170,7 +170,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.PolygonWithHoles)
-                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
+                    guard let polygon = try? Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
@@ -194,12 +194,12 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.PolygonWithHolesInGeometry)
-                    guard let polygon = Pytheas.shape(from: json) as? Polygon else {
+                    guard let polygon = try? Pytheas.shape(from: json) as? Polygon else {
                         fail("Could not deserialize polygon.")
                         return
                     }
                     
-                    guard let serialized = Pytheas.geoJson(from: polygon, properties: properties(from: polygon)) else {
+                    guard let serialized = try? Pytheas.geoJson(from: polygon, properties: properties(from: polygon)) else {
                         fail("Could not serialize polygon.")
                         return
                     }
@@ -235,7 +235,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
                     
                     let json = jsonFromFixture(Fixture.MultiPoint)
-                    guard let points = Pytheas.shape(from: json) as? [Point] else {
+                    guard let points = try? Pytheas.shape(from: json) as? [Point] else {
                         fail("Could not deserialize MultiPoint.")
                         return
                     }
@@ -250,7 +250,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
                     
                     let json = jsonFromFixture(Fixture.MultiPointInGeometry)
-                    guard let points = Pytheas.shape(from: json) as? [Point] else {
+                    guard let points = try? Pytheas.shape(from: json) as? [Point] else {
                         fail("Could not deserialize MultiPoint.")
                         return
                     }
@@ -272,7 +272,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture("MultiLineString")
-                    guard let lines = Pytheas.shape(from: json) as? [Line] else {
+                    guard let lines = try? Pytheas.shape(from: json) as? [Line] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -290,7 +290,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.MultiLineStringInGeometry)
-                    guard let lines = Pytheas.shape(from: json) as? [Line] else {
+                    guard let lines = try? Pytheas.shape(from: json) as? [Line] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -311,7 +311,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes directly") {
 
                     let json = jsonFromFixture(Fixture.MultiPolygon)
-                    guard let polygons = Pytheas.shape(from: json) as? [Polygon] else {
+                    guard let polygons = try? Pytheas.shape(from: json) as? [Polygon] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -338,7 +338,7 @@ final class PytheasTests: QuickSpec {
                 it("deserializes and serializes in geometry") {
 
                     let json = jsonFromFixture(Fixture.MultiPolygonInGeometry)
-                    guard let polygons = Pytheas.shape(from: json) as? [Polygon] else {
+                    guard let polygons = try? Pytheas.shape(from: json) as? [Polygon] else {
                         fail("Could not deserialize MultiLineString.")
                         return
                     }
@@ -368,12 +368,12 @@ final class PytheasTests: QuickSpec {
                 it("is deserializes and serializes") {
 
                     let json = jsonFromFixture(Fixture.FeatureCollection)
-                    guard let features = Pytheas.shapes(from: json) as? [Shape] else {
+                    guard let features = try? Pytheas.shapes(from: json) as? [Shape] else {
                         fail("Could not deserialize feature collection.")
                         return
                     }
                     
-                    guard let serialized = Pytheas.geoJson(from: features, properties: features.map { properties(from: $0) }) else {
+                    guard let serialized = try? Pytheas.geoJson(from: features, properties: features.map { properties(from: $0) }) else {
                         fail("Could not serialize feature collection.")
                         return
                     }

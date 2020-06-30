@@ -2,8 +2,21 @@ import Foundation
 import CoreLocation
 
 public final class Pytheas {
+
+    enum DeserializeError: Swift.Error {
+        case typeNotSupported
+        case invalidCoordinatePair
+        case polygonIsEmpty
+        case noFeaturesFound
+        case noPointCoordinatesFound
+        case noLineCoordinatesFound
+        case noPolygonCoordinatesFound
+        case noMultiPointCoordinatesFound
+        case noMultiLineCoordinatesFound
+        case noMultiPolygonCoordinatesFound
+    }
     
-    public static func shape(from feature: [String: Any]) -> Any? {
+    public static func shape(from feature: [String: Any]) throws -> Any? {
         
         let type: String?
         if let geometry = feature[Key.geometry] as? [String: Any] {
@@ -13,24 +26,24 @@ public final class Pytheas {
         }
         
         switch type {
-        case Value.Point: return point(from: feature)
-        case Value.LineString: return lineString(from: feature)
-        case Value.Polygon: return polygon(from: feature)
-        case Value.MultiPoint: return multiPoint(from: feature)
-        case Value.MultiLineString: return multiLineString(from: feature)
-        case Value.MultiPolygon: return multiPolygon(from: feature)
-        default: return nil
+        case Value.Point: return try point(from: feature)
+        case Value.LineString: return try lineString(from: feature)
+        case Value.Polygon: return try polygon(from: feature)
+        case Value.MultiPoint: return try multiPoint(from: feature)
+        case Value.MultiLineString: return try multiLineString(from: feature)
+        case Value.MultiPolygon: return try multiPolygon(from: feature)
+        default: throw DeserializeError.typeNotSupported
         }
     }
     
-    public static func shapes(from featureCollection: [String: Any]) -> [Any]? {
+    public static func shapes(from featureCollection: [String: Any]) throws -> [Any]? {
         
         assert(featureCollection[Key.type] as? String == Value.FeatureCollection)
-        guard let features = featureCollection[Key.features] as? [[String: Any]] else { return nil }
+        guard let features = featureCollection[Key.features] as? [[String: Any]] else { throw DeserializeError.noFeaturesFound }
         
         var shapes: [Any] = []
         for feature in features {
-            guard let shape = shape(from: feature) else { continue }
+            guard let shape = try shape(from: feature) else { continue }
             if let subShapes = shape as? [Any] {
                 shapes.append(contentsOf: subShapes)
             } else {
@@ -41,34 +54,34 @@ public final class Pytheas {
         return shapes
     }
     
-    private static func point(from feature:[String: Any]) -> Point? {
+    private static func point(from feature:[String: Any]) throws -> Point? {
         
         guard let figures = unwrapCoordinates(from: feature) as? [Double],
-              let coordinate = coordinate(from: figures) else { return nil }
+              let coordinate = try coordinate(from: figures) else { throw DeserializeError.noPointCoordinatesFound }
 
         return Point(coordinate: coordinate,
                      title: title(from: feature[Key.properties] as? [String: Any]),
                      subtitle: subtitle(from: feature[Key.properties] as? [String: Any]))
     }
     
-    private static func lineString(from feature:[String: Any]) -> Line? {
+    private static func lineString(from feature:[String: Any]) throws -> Line? {
         
-        guard let pairs = unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
+        guard let pairs = unwrapCoordinates(from: feature) as? [[Double]] else { throw DeserializeError.noLineCoordinatesFound }
         assert(pairs.count >= 2, "Line needs at least two points.")
         
-        return Line(coordinates: pairs.compactMap { coordinate(from: $0) },
+        return Line(coordinates: try pairs.compactMap { try coordinate(from: $0) },
                     title: title(from: feature[Key.properties] as? [String: Any]),
                     subtitle: subtitle(from: feature[Key.properties] as? [String: Any]))
     }
     
-    private static func polygon(from feature:[String: Any]) -> Polygon? {
+    private static func polygon(from feature:[String: Any]) throws -> Polygon? {
         
-        guard let sets = unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
+        guard let sets = unwrapCoordinates(from: feature) as? [[[Double]]] else { throw DeserializeError.noPolygonCoordinatesFound }
 
         var all: [Polygon] = []
         for pairs in sets {
             
-            let polygon = Polygon(coordinates: pairs.compactMap { coordinate(from: $0) },
+            let polygon = Polygon(coordinates: try pairs.compactMap { try coordinate(from: $0) },
                                   interiorPolygons: [],
                                   title: title(from: feature[Key.properties] as? [String: Any]),
                                   subtitle: subtitle(from: feature[Key.properties] as? [String: Any]))
@@ -77,7 +90,7 @@ public final class Pytheas {
         
         let polygon: Polygon
         switch all.count {
-        case 0: return nil
+        case 0: throw DeserializeError.polygonIsEmpty
         case 1: polygon = all.first!
         default:
             let exterior = all.first!
@@ -91,9 +104,9 @@ public final class Pytheas {
         return polygon
     }
     
-    private static func multiPoint(from feature:[String: Any]) -> [Point]? {
+    private static func multiPoint(from feature:[String: Any]) throws -> [Point]? {
         
-        guard let pairs = unwrapCoordinates(from: feature) as? [[Double]] else { return nil }
+        guard let pairs = unwrapCoordinates(from: feature) as? [[Double]] else { throw DeserializeError.noMultiPointCoordinatesFound }
         let properties = feature[Key.properties] as? [String: Any]
         
         var points: [Point?] = []
@@ -109,15 +122,15 @@ public final class Pytheas {
             subFeature[Key.geometry] = subGeometry
             subFeature[Key.properties] = properties
  
-            points.append(point(from: subFeature))
+            points.append(try point(from: subFeature))
         }
         
         return points.compactMap {$0}
     }
     
-    private static func multiLineString(from feature:[String: Any]) -> [Line]? {
+    private static func multiLineString(from feature:[String: Any]) throws -> [Line]? {
         
-        guard let sets = unwrapCoordinates(from: feature) as? [[[Double]]] else { return nil }
+        guard let sets = unwrapCoordinates(from: feature) as? [[[Double]]] else { throw DeserializeError.noMultiLineCoordinatesFound }
         let properties = feature[Key.properties] as? [String: Any]
         
         var lines: [Line?] = []
@@ -133,15 +146,15 @@ public final class Pytheas {
             subFeature[Key.geometry] = subGeometry
             subFeature[Key.properties] = properties
             
-            lines.append(lineString(from: subFeature))
+            lines.append(try lineString(from: subFeature))
         }
         
         return lines.compactMap {$0}
     }
     
-    private static func multiPolygon(from feature:[String: Any]) -> [Polygon]? {
+    private static func multiPolygon(from feature:[String: Any]) throws -> [Polygon]? {
         
-        guard let groups = unwrapCoordinates(from: feature) as? [[[[Double]]]] else { return nil }
+        guard let groups = unwrapCoordinates(from: feature) as? [[[[Double]]]] else { throw DeserializeError.noMultiPolygonCoordinatesFound }
         let properties = feature[Key.properties] as? [String: Any]
         
         var polygons: [Polygon?] = []
@@ -157,7 +170,7 @@ public final class Pytheas {
             subFeature[Key.geometry] = subGeometry
             subFeature[Key.properties] = properties
             
-            polygons.append(polygon(from: subFeature))
+            polygons.append(try polygon(from: subFeature))
         }
         
         return polygons.compactMap {$0}
@@ -165,10 +178,10 @@ public final class Pytheas {
     
     // MARK: - Helper
     
-    private static func coordinate(from coordinates: [Double]) -> CLLocationCoordinate2D? {
+    private static func coordinate(from coordinates: [Double]) throws -> CLLocationCoordinate2D? {
         guard coordinates.count == 2,
             let longitude = coordinates.first,
-            let latitude = coordinates.last else { return nil }
+            let latitude = coordinates.last else { throw DeserializeError.invalidCoordinatePair }
         
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }

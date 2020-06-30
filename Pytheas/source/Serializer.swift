@@ -1,8 +1,13 @@
 import Foundation
 
 extension Pytheas {
-    
-    public static func geoJson(from shape: Shape, properties: [String: Any]) -> [String: Any]? {
+
+    enum SerializeError: Swift.Error {
+        case shapeNotSupported
+        case shapesNotEqualProperties
+    }
+
+    public static func geoJson(from shape: Shape, properties: [String: Any]) throws -> [String: Any]? {
         
         var featureJson: [String: Any] = [:]
         
@@ -11,7 +16,7 @@ extension Pytheas {
         case let point as Point: geometryJson = Pytheas.geoJSON(from: point)
         case let line as Line: geometryJson = Pytheas.geoJSON(from: line)
         case let polygon as Polygon: geometryJson = Pytheas.geoJSON(from: polygon)
-        default: return nil
+        default: throw SerializeError.shapeNotSupported
         }
         
         featureJson[Key.type] = Value.Feature
@@ -21,15 +26,15 @@ extension Pytheas {
         return featureJson
     }
     
-    public static func geoJson(from shapes: [Shape], properties: [[String: Any]]) -> [String: Any]? {
+    public static func geoJson(from shapes: [Shape], properties: [[String: Any]]) throws -> [String: Any]? {
         
-        guard shapes.count == properties.count else { return nil }
+        guard shapes.count == properties.count else { throw SerializeError.shapesNotEqualProperties }
         
         var featuresJson: [String: Any] = [:]
         var features: [[String: Any]?] = []
         
         for (index, shape) in shapes.enumerated() {
-            features.append(Pytheas.geoJson(from: shape, properties: properties[index]))
+            features.append(try Pytheas.geoJson(from: shape, properties: properties[index]))
         }
         
         featuresJson[Key.type] = Value.FeatureCollection
