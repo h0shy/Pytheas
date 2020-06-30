@@ -1,11 +1,3 @@
-//
-//  Deserializer.swift
-//  Pytheas
-//
-//  Created by Stefan Hoschkara on 21.03.18.
-//  Copyright © 2018 Stefan Hoschkara. All rights reserved.
-//
-
 import Foundation
 import CoreLocation
 

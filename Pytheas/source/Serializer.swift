@@ -1,11 +1,3 @@
-//
-//  Serializer.swift
-//  Pytheas
-//
-//  Created by Stefan Hoschkara on 29.03.18.
-//  Copyright © 2018 Stefan Hoschkara. All rights reserved.
-//
-
 import Foundation
 
 extension Pytheas {

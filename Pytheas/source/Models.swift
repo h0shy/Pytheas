@@ -1,11 +1,3 @@
-//
-//  Models.swift
-//  Pytheas
-//
-//  Created by Stefan Hoschkara on 09.05.18.
-//  Copyright © 2018 Stefan Hoschkara. All rights reserved.
-//
-
 import Foundation
 import CoreLocation
 

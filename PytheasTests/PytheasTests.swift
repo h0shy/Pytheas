@@ -1,11 +1,3 @@
-//
-//  PytheasTests.swift
-//  PytheasTests
-//
-//  Created by Stefan Hoschkara on 21.03.18.
-//  Copyright © 2018 Stefan Hoschkara. All rights reserved.
-//
-
 import Quick
 import Nimble
 @testable import Pytheas

@@ -1,11 +1,3 @@
-//
-//  Pytheas.h
-//  Pytheas
-//
-//  Created by Stefan Hoschkara on 26.04.18.
-//  Copyright © 2018 Stefan Hoschkara. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for Pytheas.
