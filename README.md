@@ -42,7 +42,7 @@ import the framework with `import Pytheas`.
 ### GoogleMaps Point
 
 ```swift
-if let point = try? Pytheas.shape(from: json) as? Point {
+if let point = try? Pytheas.shape(from: json) as? Pytheas.Point {
 let googleMapsPoint = GMSMapPoint(x: point.coordinate.latitude, y: point.coordinate.longitude)
 }
 ```
@@ -50,7 +50,7 @@ let googleMapsPoint = GMSMapPoint(x: point.coordinate.latitude, y: point.coordin
 ### GoogleMaps Line
 
 ```swift
-if let line = try? Pytheas.shape(from: json) as? Line {
+if let line = try? Pytheas.shape(from: json) as? Pytheas.Line {
 let path = GMSMutablePath()
 for coord in line.coordinates {
 path.add(coord)
@@ -62,7 +62,7 @@ let line = GMSPolyline(path: path)
 ### GoogleMaps Polygon
 
 ```swift
-if let polygon = try? Pytheas.shape(from: json) as? Polygon {
+if let polygon = try? Pytheas.shape(from: json) as? Pytheas.Polygon {
 let path = GMSMutablePath()
 for coord in polygon.coordinates {
 path.add(coord)
@@ -74,7 +74,7 @@ let line = GMSPolygon(path: path)
 ### MapKit Point
 
 ```swift
-if let point = try? Pytheas.shape(from: json) as? Point {
+if let point = try? Pytheas.shape(from: json) as? Pytheas.Point {
 let mapPoint = MKMapPoint(point.coordinate)
 }
 ```
@@ -82,7 +82,7 @@ let mapPoint = MKMapPoint(point.coordinate)
 ### MapKit Line
 
 ```swift
-if let line = try? Pytheas.shape(from: json) as? Line {
+if let line = try? Pytheas.shape(from: json) as? Pytheas.Line {
 let mapLine = MKPolyline(coordinates: line.coordinates, count: line.coordinates.count)
 }
 ```
@@ -90,7 +90,7 @@ let mapLine = MKPolyline(coordinates: line.coordinates, count: line.coordinates.
 ### MapKit Polygon
 
 ```swift
-if let polygon = try? Pytheas.shape(from: json) as? Polygon {
+if let polygon = try? Pytheas.shape(from: json) as? Pytheas.Polygon {
 let interiors = polygon.interiorPolygons.map { MKPolygon(coordinates: $0.coordinates, count: $0.coordinates.count) }
 let mapPolygon = MKPolygon(coordinates: polygon.coordinates, count: polygon.coordinates.count, interiorPolygons: interiors)
 }
