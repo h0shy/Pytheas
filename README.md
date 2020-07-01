@@ -14,6 +14,10 @@ The output model is generic, so you can instantiate MapKit and GoogleMaps points
 
 ## Getting Started
 
+### Swift Package Manger
+
+Add `git@github.com:h0shy/Pytheas.git` via `File` -> `Swift Packages` -> `Add Package Dependency`
+
 ### CocoaPods
 
 Use this in your Podfile:
