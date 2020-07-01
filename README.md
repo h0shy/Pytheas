@@ -24,15 +24,7 @@ pod 'Pytheas'
 
 Then run `pod install`.
 
-### Carthage
 
-Add this in your Cartfile:
-
-```
-github "h0shy/Pytheas"
-```
-
-Then run `carthage update`.
 
 In any file you'd like to use Pytheas in, don't forget to
 import the framework with `import Pytheas`.
