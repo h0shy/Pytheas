@@ -2,7 +2,7 @@
 
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Pytheas.svg)](https://cocoapods.org/pods/Pytheas)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![CI](https://github.com/h0shy/Pytheas/workflows/BuildAndTest/badge.svg)
+![Continuous Integration](https://github.com/h0shy/Pytheas/workflows/BuildAndTest/badge.svg)
 [![Swift Version](https://img.shields.io/badge/Swift-5.x-orange.svg)]()
 [![License MIT](https://img.shields.io/npm/l/express.svg?style=flat)](https://en.wikipedia.org/wiki/MIT_License)
 
