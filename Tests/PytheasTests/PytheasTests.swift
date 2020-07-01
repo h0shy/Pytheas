@@ -1,5 +1,6 @@
 import Quick
 import Nimble
+import Foundation
 @testable import Pytheas
 
 final class PytheasTests: QuickSpec {
@@ -9,16 +10,24 @@ final class PytheasTests: QuickSpec {
         let longitudeIndex = 0
         let latitudeIndex = 1
         let outerPolygonIndex = 0
+
+        func data(for string: String) -> Data {
+            let currentFile = URL(fileURLWithPath: #file)
+            let currentDirectory = currentFile.deletingLastPathComponent()
+            let url = currentDirectory.appendingPathComponent("fixtures").appendingPathComponent(string).appendingPathExtension("geojson")
+            do {
+                return try Data(contentsOf: url, options: .mappedIfSafe)
+            } catch {
+                fatalError("Could not load json")
+            }
+        }
         
         func jsonFromFixture(_ name: String) -> [String: Any] {
-            let defaultBundle = Bundle(for: type(of: self))
-            let defaultPath = defaultBundle.path(forResource: name, ofType: "geojson")!
-            let url = URL(fileURLWithPath: defaultPath)
-            let jsonData = try! Data.init(contentsOf: url, options: .mappedIfSafe)
+            let jsonData = data(for: name)
 
             do {
                 guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else  {
-                    fail("Could not find fixture \(name) in \(jsonData) with url: \(url)")
+                    fail("Could not find fixture \(name) in \(jsonData) with url: \(name)")
                     return [:]
                 }
                 return json

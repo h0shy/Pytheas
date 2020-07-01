@@ -16,7 +16,7 @@ The output model is generic, so you can instantiate MapKit and GoogleMaps points
 
 ### CocoaPods
 
-Use the following entry in your Podfile:
+Use this in your Podfile:
 
 ```rb
 pod 'Pytheas'
@@ -26,7 +26,7 @@ Then run `pod install`.
 
 ### Carthage
 
-Make the following entry in your Cartfile:
+Add this in your Cartfile:
 
 ```
 github "h0shy/Pytheas"
@@ -43,7 +43,7 @@ import the framework with `import Pytheas`.
 
 ```swift
 if let point = try? Pytheas.shape(from: json) as? Point {
-    let googleMapsPoint = GMSMapPoint(x: point.coordinate.latitude, y: point.coordinate.longitude)
+let googleMapsPoint = GMSMapPoint(x: point.coordinate.latitude, y: point.coordinate.longitude)
 }
 ```
 
@@ -51,11 +51,11 @@ if let point = try? Pytheas.shape(from: json) as? Point {
 
 ```swift
 if let line = try? Pytheas.shape(from: json) as? Line {
-    let path = GMSMutablePath()
-    for coord in line.coordinates {
-        path.add(coord)
-    }
-    let line = GMSPolyline(path: path)
+let path = GMSMutablePath()
+for coord in line.coordinates {
+path.add(coord)
+}
+let line = GMSPolyline(path: path)
 }
 ```
 
@@ -63,11 +63,11 @@ if let line = try? Pytheas.shape(from: json) as? Line {
 
 ```swift
 if let polygon = try? Pytheas.shape(from: json) as? Polygon {
-    let path = GMSMutablePath()
-    for coord in polygon.coordinates {
-        path.add(coord)
-    }
-    let line = GMSPolygon(path: path)
+let path = GMSMutablePath()
+for coord in polygon.coordinates {
+path.add(coord)
+}
+let line = GMSPolygon(path: path)
 }
 ```
 
@@ -75,7 +75,7 @@ if let polygon = try? Pytheas.shape(from: json) as? Polygon {
 
 ```swift
 if let point = try? Pytheas.shape(from: json) as? Point {
-    let mapPoint = MKMapPoint(point.coordinate)
+let mapPoint = MKMapPoint(point.coordinate)
 }
 ```
 
@@ -83,7 +83,7 @@ if let point = try? Pytheas.shape(from: json) as? Point {
 
 ```swift
 if let line = try? Pytheas.shape(from: json) as? Line {
-    let mapLine = MKPolyline(coordinates: line.coordinates, count: line.coordinates.count)
+let mapLine = MKPolyline(coordinates: line.coordinates, count: line.coordinates.count)
 }
 ```
 
@@ -91,8 +91,8 @@ if let line = try? Pytheas.shape(from: json) as? Line {
 
 ```swift
 if let polygon = try? Pytheas.shape(from: json) as? Polygon {
-    let interiors = polygon.interiorPolygons.map { MKPolygon(coordinates: $0.coordinates, count: $0.coordinates.count) }
-    let mapPolygon = MKPolygon(coordinates: polygon.coordinates, count: polygon.coordinates.count, interiorPolygons: interiors)
+let interiors = polygon.interiorPolygons.map { MKPolygon(coordinates: $0.coordinates, count: $0.coordinates.count) }
+let mapPolygon = MKPolygon(coordinates: polygon.coordinates, count: polygon.coordinates.count, interiorPolygons: interiors)
 }
 ```
 
@@ -118,11 +118,11 @@ let polygonJson = try? Pytheas.geoJson(from: polygonJson, properties: properties
 
 ```swift
 let collectionJson = try? Pytheas.geoJson(from: features, properties: features.map {
-                        var properties: [String: Any] = [:]
-                        properties[Key.title] = $0.title
-                        properties[Key.subtitle] = $0.subtitle
-                        return properties
-                     })
+var properties: [String: Any] = [:]
+properties[Key.title] = $0.title
+properties[Key.subtitle] = $0.subtitle
+return properties
+})
 ```
 
 ## License
